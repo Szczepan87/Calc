@@ -238,8 +238,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void equalsButton(View view) {
-        String[] numbers = operations.split(getOperator());
-        secondVal = BigDecimal.valueOf(Double.valueOf(numbers[1]));
+        String number = String.valueOf(operations.substring(operations.indexOf(getOperator())));
+        secondVal = BigDecimal.valueOf(Double.valueOf(number));
         if (getOperator().equals("+"))
             result = fistVal.add(secondVal);
         else if (getOperator().equals("-"))
@@ -247,7 +247,8 @@ public class MainActivity extends AppCompatActivity {
         else if (getOperator().equals("*"))
             result = fistVal.multiply(secondVal);
         else if (getOperator().equals("/"))
-            result = fistVal.divide(secondVal);
+            result = fistVal.divide(secondVal).setScale(ROUND, ROUNDING_MODE);
+        resultTextView.setText(String.valueOf(result));
     }
 
     public void negateButton(View view) {
