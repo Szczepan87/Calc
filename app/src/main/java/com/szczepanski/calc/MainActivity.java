@@ -10,11 +10,17 @@ import java.math.RoundingMode;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView resultTextView;
-    String operations = "";
+    protected TextView resultTextView;
+    private String operations = "";
 
-    BigDecimal result;
 
+    private final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
+    private final int ROUND = 10;
+    private BigDecimal result;
+    private BigDecimal fistVal;
+    private BigDecimal secondVal;
+
+    private int operator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +63,30 @@ public class MainActivity extends AppCompatActivity {
         else if (operations.contains("/"))
             return false;
         return true;
+    }
+
+    //rozpoznaje operator
+    private void setOperator(char operator) {
+        if (operator == '+')
+            this.operator = 1;
+        else if (operator == '-')
+            this.operator = 2;
+        else if (operator == '*')
+            this.operator = 3;
+        else if (operator == '/')
+            this.operator = 4;
+    }
+
+    private String getOperator() {
+        if (operator == 1)
+            return "+";
+        else if (operator == 2)
+            return "-";
+        else if (operator == 3)
+            return "*";
+        else if (operator == 4)
+            return "/";
+        else return "";
     }
 
     //dokleja znak do stringa
@@ -112,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
     public void makePercent(View view) {
         if (!isOperator() && hasNonOperator()) {
             result = new BigDecimal(Double.valueOf(operations) / 100);
-            result = result.setScale(2, RoundingMode.HALF_UP); // zaokrąglenie do dwóch miejsc po przecinku
+            result = result.setScale(ROUND, ROUNDING_MODE); // zaokrąglenie do 10 miejsc po przecinku
             operations = String.valueOf(result);
             resultTextView.setText(operations);
         }
@@ -122,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
     public void makeSQRT(View view) {
         if (!isOperator() && hasNonOperator()) {
             result = new BigDecimal(Math.sqrt(Double.valueOf(operations)));
-            result = result.setScale(6, RoundingMode.HALF_UP);
+            result = result.setScale(ROUND, ROUNDING_MODE);
             operations = String.valueOf(result);
             operations = operations.replace(".000000", "");
             resultTextView.setText(operations);
@@ -142,9 +172,8 @@ public class MainActivity extends AppCompatActivity {
     public void makeFraction(View view) {
         if (isNotZero()) {
             result = new BigDecimal(1 / Double.valueOf(operations));
-            result = result.setScale(6, RoundingMode.HALF_UP);
+            result = result.setScale(ROUND, ROUNDING_MODE);
             operations = String.valueOf(result);
-            operations = operations.replace(".000000", "");
             resultTextView.setText(operations);
         } else {
             resultTextView.setText("0");
@@ -175,26 +204,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void divideButton(View view) {
-        if (!isOperator() && !isNotZero())
+        if (!isOperator() && !isNotZero()) {
+            fistVal = BigDecimal.valueOf(Double.valueOf(operations));
             updateTextView("/");
+            setOperator('/');
+        }
+
     }
 
     public void multiplyButton(View view) {
-        if (!isOperator())
+        if (!isOperator()) {
+            fistVal = BigDecimal.valueOf(Double.valueOf(operations));
             updateTextView("*");
+            setOperator('*');
+        }
     }
 
     public void minusButton(View view) {
-        if (!isOperator())
+        if (!isOperator()) {
+            fistVal = BigDecimal.valueOf(Double.valueOf(operations));
             updateTextView("-");
+            setOperator('-');
+        }
     }
 
     public void plusButton(View view) {
-        if (!isOperator())
+        if (!isOperator()) {
+            fistVal = BigDecimal.valueOf(Double.valueOf(operations));
             updateTextView("+");
+            setOperator('+');
+        }
+
     }
 
     public void equalsButton(View view) {
+        String[] numbers = operations.split(getOperator());
+        secondVal = BigDecimal.valueOf(Double.valueOf(numbers[1]));
 
     }
 
