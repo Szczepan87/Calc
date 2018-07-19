@@ -3,7 +3,6 @@ package com.szczepanski.calc;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
@@ -43,8 +42,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //sprawdza zero
-    private boolean isZero() {
+    private boolean isNotZero() {
         return result != null && !operations.equals("");
+    }
+
+    //sprawdza, czy na ekranie nie ma operatora
+    private boolean hasNonOperator() {
+        if (operations.contains("+"))
+            return false;
+        else if (operations.contains("-"))
+            return false;
+        else if (operations.contains("*"))
+            return false;
+        else if (operations.contains("/"))
+            return false;
+        return true;
     }
 
     //dokleja znak do stringa
@@ -92,41 +104,52 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addZero(View view) {
-        if (!isZero())
+        if (isNotZero())
             updateTextView("0");
     }
 
     //ustawia dziesiętną reprezentację procenta(dzieli na 100)
     public void makePercent(View view) {
-        result = new BigDecimal(Double.valueOf(operations) / 100);
-        result = result.setScale(2, RoundingMode.HALF_UP); // zaokrąglenie do dwóch miejsc po przecinku
-        operations = String.valueOf(result);
-        resultTextView.setText(operations);
+        if (!isOperator() && hasNonOperator()) {
+            result = new BigDecimal(Double.valueOf(operations) / 100);
+            result = result.setScale(2, RoundingMode.HALF_UP); // zaokrąglenie do dwóch miejsc po przecinku
+            operations = String.valueOf(result);
+            resultTextView.setText(operations);
+        }
     }
 
     //tworzy pierwiastek kwadratowy z wyniku
     public void makeSQRT(View view) {
-        result = new BigDecimal(Math.sqrt(Double.valueOf(operations)));
-        result = result.setScale(6, RoundingMode.HALF_UP);
-        operations = String.valueOf(result);
-        operations = operations.replace(".000000", "");
-        resultTextView.setText(operations);
+        if (!isOperator() && hasNonOperator()) {
+            result = new BigDecimal(Math.sqrt(Double.valueOf(operations)));
+            result = result.setScale(6, RoundingMode.HALF_UP);
+            operations = String.valueOf(result);
+            operations = operations.replace(".000000", "");
+            resultTextView.setText(operations);
+        }
     }
 
     //tworzy kwadrat z wyniku
     public void makeSquare(View view) {
-        result = new BigDecimal(Math.pow(Double.valueOf(operations), 2));
-        operations = String.valueOf(result);
-        resultTextView.setText(operations);
+        if (!isOperator() && hasNonOperator()) {
+            result = new BigDecimal(Math.pow(Double.valueOf(operations), 2));
+            operations = String.valueOf(result);
+            resultTextView.setText(operations);
+        }
     }
 
     //tworzy ułamek, którego mianownikiem jest wynik
     public void makeFraction(View view) {
-        result = new BigDecimal(1 / Double.valueOf(operations));
-        result = result.setScale(6, RoundingMode.HALF_UP);
-        operations = String.valueOf(result);
-        operations = operations.replace(".000000", "");
-        resultTextView.setText(operations);
+        if (isNotZero()) {
+            result = new BigDecimal(1 / Double.valueOf(operations));
+            result = result.setScale(6, RoundingMode.HALF_UP);
+            operations = String.valueOf(result);
+            operations = operations.replace(".000000", "");
+            resultTextView.setText(operations);
+        } else {
+            resultTextView.setText("0");
+            result = BigDecimal.valueOf(0);
+        }
     }
 
     //kasuje wynik i zeruje stringa
@@ -152,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void divideButton(View view) {
-        if (!isOperator() && !isZero())
+        if (!isOperator() && !isNotZero())
             updateTextView("/");
     }
 
@@ -176,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void negateButton(View view) {
-        if (!isZero()) {
+        if (isNotZero() && hasNonOperator()) {
             result = new BigDecimal(Double.valueOf(operations)).negate();
             operations = String.valueOf(result);
             resultTextView.setText(operations);
