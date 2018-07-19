@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //sprawdza zero
-    private boolean isNotZero() {
+    private boolean isZero() {
         return result != null && !operations.equals("");
     }
 
@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addZero(View view) {
-        if (isNotZero())
+        if (isZero())
             updateTextView("0");
     }
 
@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
 
     //tworzy ułamek, którego mianownikiem jest wynik
     public void makeFraction(View view) {
-        if (isNotZero()) {
+        if (isZero()) {
             result = new BigDecimal(1 / Double.valueOf(operations));
             result = result.setScale(ROUND, ROUNDING_MODE);
             operations = String.valueOf(result);
@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void divideButton(View view) {
-        if (!isOperator() && !isNotZero()) {
+        if (!isOperator() && !isZero()) {
             fistVal = BigDecimal.valueOf(Double.valueOf(operations));
             updateTextView("/");
             setOperator('/');
@@ -240,11 +240,18 @@ public class MainActivity extends AppCompatActivity {
     public void equalsButton(View view) {
         String[] numbers = operations.split(getOperator());
         secondVal = BigDecimal.valueOf(Double.valueOf(numbers[1]));
-
+        if (getOperator().equals("+"))
+            result = fistVal.add(secondVal);
+        else if (getOperator().equals("-"))
+            result = fistVal.subtract(secondVal);
+        else if (getOperator().equals("*"))
+            result = fistVal.multiply(secondVal);
+        else if (getOperator().equals("/"))
+            result = fistVal.divide(secondVal);
     }
 
     public void negateButton(View view) {
-        if (isNotZero() && hasNonOperator()) {
+        if (isZero() && hasNonOperator()) {
             result = new BigDecimal(Double.valueOf(operations)).negate();
             operations = String.valueOf(result);
             resultTextView.setText(operations);
