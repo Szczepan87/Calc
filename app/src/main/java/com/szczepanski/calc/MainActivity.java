@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     TextView resultTextView;
     String operations = "";
 
-    BigDecimal result = new BigDecimal(String.valueOf(resultTextView));
+    BigDecimal result;
 
 
     @Override
@@ -44,24 +44,12 @@ public class MainActivity extends AppCompatActivity {
 
     //sprawdza zero
     private boolean isZero() {
-        if (result != null && !operations.equals("")) {
-            if (operations.charAt(0) == '0')
-                return true;
-            else if (operations.equals("0"))
-                return true;
-            else if (operations.equals(""))
-                return true;
-            else if (operations.length() == 0)
-                return true;
-            else if (result.intValue() == 0)
-                return true;
-            else return false;
-        }
-        return false;
+        return result != null && !operations.equals("");
     }
 
     //dokleja znak do stringa
     private void updateTextView(String text) {
+        resultTextView = findViewById(R.id.resultTextView);
         this.operations += text;
         resultTextView.setText(operations);
     }
@@ -192,7 +180,10 @@ public class MainActivity extends AppCompatActivity {
             result = new BigDecimal(Double.valueOf(operations)).negate();
             operations = String.valueOf(result);
             resultTextView.setText(operations);
-        } else resultTextView.setText("0");
+        } else {
+            resultTextView.setText("0");
+            result = BigDecimal.valueOf(0);
+        }
     }
 
     public void pointButton(View view) {
