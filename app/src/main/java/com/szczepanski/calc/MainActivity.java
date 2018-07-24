@@ -136,7 +136,8 @@ public class MainActivity extends AppCompatActivity {
     //ustawia dziesiętną reprezentację procenta(dzieli na 100)
     public void makePercent(View view) {
         if (!isOperator() && hasNonOperator()) {
-            result = new BigDecimal(Double.valueOf(String.valueOf(resultTextView)) / 100);
+            String resultString = resultTextView.getText().toString().replace(",",".");
+            result = new BigDecimal(Double.valueOf(String.valueOf(resultString)) / 100);
             result = result.setScale(ROUND, ROUNDING_MODE); // zaokrąglenie do 10 miejsc po przecinku
             resultTextView.setText(String.valueOf(resultTextView));
         }
