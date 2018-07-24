@@ -88,8 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
     //dokleja znak do stringa
     private void updateResultTextView(String text) {
-        resultTextView = findViewById(R.id.resultTextView);
-        resultTextView.setText(resultTextView.getText() + text);
+        resultTextView.setText(String.format("%s%s", String.valueOf(resultTextView.getText()), text));
     }
 
     //warunkuje jaki znak jest dodawany do stringa
@@ -217,7 +216,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void plusButton(View view) {
         if (!isOperator()) {
-            fistVal = BigDecimal.valueOf(Double.valueOf(String.valueOf(resultTextView)));
+            resultTextView = findViewById(R.id.resultTextView);
+            fistVal = BigDecimal.valueOf(Double.parseDouble(String.valueOf(resultTextView)));
             updateResultTextView("+");
             setOperator('+');
         }
