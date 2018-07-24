@@ -238,16 +238,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void equalsButton(View view) {
-        String number = String.valueOf(operations.substring(operations.indexOf(getOperator())));
+        String number = String.valueOf(operations.substring(operations.indexOf(getOperator())+1));
         secondVal = BigDecimal.valueOf(Double.valueOf(number));
-        if (getOperator().equals("+"))
-            result = fistVal.add(secondVal);
-        else if (getOperator().equals("-"))
-            result = fistVal.subtract(secondVal);
-        else if (getOperator().equals("*"))
-            result = fistVal.multiply(secondVal);
-        else if (getOperator().equals("/"))
-            result = fistVal.divide(secondVal).setScale(ROUND, ROUNDING_MODE);
+        switch (getOperator()) {
+            case "+":
+                result = fistVal.add(secondVal);
+                break;
+            case "-":
+                result = fistVal.subtract(secondVal);
+                break;
+            case "*":
+                result = fistVal.multiply(secondVal);
+                break;
+            case "/":
+                result = fistVal.divide(secondVal).setScale(ROUND, ROUNDING_MODE);
+                break;
+        }
         resultTextView.setText(String.valueOf(result));
     }
 
