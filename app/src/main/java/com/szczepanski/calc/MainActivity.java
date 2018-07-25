@@ -7,10 +7,13 @@ import android.widget.TextView;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
 
-    protected TextView resultTextView;
+    NumberFormat numberFormat = NumberFormat.getNumberInstance();
+    private TextView resultTextView;
+    String stringResutValue;
 
     private final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
     private final int ROUND = 10;
@@ -29,17 +32,17 @@ public class MainActivity extends AppCompatActivity {
 
     //sprawdza czy poprzedni znak jest liczbą
     private boolean isOperator() {
-        if (resultTextView.getText().charAt(resultTextView.length() - 1) == '/')
+        if (stringResutValue.charAt(resultTextView.length() - 1) == '/')
             return true;
-        else if (resultTextView.getText().charAt(resultTextView.length() - 1) == '*')
+        else if (stringResutValue.charAt(resultTextView.length() - 1) == '*')
             return true;
-        else if (resultTextView.getText().charAt(resultTextView.length() - 1) == '-')
+        else if (stringResutValue.charAt(resultTextView.length() - 1) == '-')
             return true;
-        else if (resultTextView.getText().charAt(resultTextView.length() - 1) == '+')
+        else if (stringResutValue.charAt(resultTextView.length() - 1) == '+')
             return true;
-        else if (resultTextView.getText().charAt(resultTextView.length() - 1) == '.')
+        else if (stringResutValue.charAt(resultTextView.length() - 1) == '.')
             return true;
-        else if (resultTextView.getText().charAt(resultTextView.length() - 1) == ',')
+        else if (stringResutValue.charAt(resultTextView.length() - 1) == ',')
             return true;
         else return false;
     }
@@ -88,7 +91,9 @@ public class MainActivity extends AppCompatActivity {
 
     //dokleja znak do stringa
     private void updateResultTextView(String text) {
-        resultTextView.setText(String.format("%s%s", String.valueOf(resultTextView.getText()), text));
+        stringResutValue = String.valueOf(resultTextView.getText());
+        stringResutValue = String.format("%s%s", String.valueOf(stringResutValue), text);
+        resultTextView.setText(stringResutValue);
     }
 
     //warunkuje jaki znak jest dodawany do stringa
@@ -136,19 +141,21 @@ public class MainActivity extends AppCompatActivity {
     //ustawia dziesiętną reprezentację procenta(dzieli na 100)
     public void makePercent(View view) {
         if (!isOperator() && hasNonOperator()) {
-            String resultString = resultTextView.getText().toString().replace(",",".");
-            result = new BigDecimal(Double.valueOf(String.valueOf(resultString)) / 100);
-            result = result.setScale(ROUND, ROUNDING_MODE); // zaokrąglenie do 10 miejsc po przecinku
-            resultTextView.setText(String.valueOf(resultTextView));
+            stringResutValue = resultTextView.getText().toString().replace(",",".");
+            result = new BigDecimal(Double.valueOf(stringResutValue) / 100);
+            result = result.setScale(ROUND, ROUNDING_MODE);// zaokrąglenie do 10 miejsc po przecinku
+            stringResutValue = String.valueOf(result);
+            resultTextView.setText(stringResutValue);
         }
     }
 
     //tworzy pierwiastek kwadratowy z wyniku
     public void makeSQRT(View view) {
         if (!isOperator() && hasNonOperator()) {
+            resultTextView.setText(numberFormat.format(resultTextView.getText()));
             result = new BigDecimal(Math.sqrt(Double.valueOf(String.valueOf(resultTextView))));
             result = result.setScale(ROUND, ROUNDING_MODE);
-            resultTextView.setText(String.valueOf(result).replace(".000000", ""));
+            resultTextView.setText(numberFormat.format(String.valueOf(result).replace(".000000", "")));
         }
     }
 
