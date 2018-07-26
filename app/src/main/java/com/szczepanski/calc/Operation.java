@@ -1,26 +1,19 @@
 package com.szczepanski.calc;
 
+import android.widget.TextView;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class Operation {
 
-    //sprawdza zero
-    private boolean isZero() {
-        if (operation.equals("0") && resultTextView.getText().equals("0"))
-            return true;
-        else return false;
-    }
+    private final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
+    private final int ROUND = 10;
+    private BigDecimal result;
+    private BigDecimal fistVal;
+    private BigDecimal secondVal;
+    private int operator;
 
-    //sprawdza, czy na ekranie nie ma operatora
-    private boolean hasNonOperator() {
-        if (operation.contains("+"))
-            return false;
-        else if (operation.contains("-"))
-            return false;
-        else if (operation.contains("*"))
-            return false;
-        else if (operation.contains("/"))
-            return false;
-        return true;
-    }
 
     //rozpoznaje operator
     private void setOperator(char operator) {
@@ -45,4 +38,15 @@ public class Operation {
             return "/";
         else return "";
     }
+
+    public String add(TextView textView){
+        String[] variable = textView.getText().toString().split(getOperator());
+        fistVal = BigDecimal.valueOf(Double.parseDouble(variable[0]));
+        secondVal = BigDecimal.valueOf(Double.parseDouble(variable[1]));
+        result = fistVal.add(secondVal);
+
+        return String.valueOf(result);
+    }
+
+
 }
