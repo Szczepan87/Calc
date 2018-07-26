@@ -48,5 +48,14 @@ public class Operation {
         return String.valueOf(result);
     }
 
+    public String percent(TextView textView){
+        String input = textView.getText().toString();
+        fistVal = BigDecimal.valueOf(Double.parseDouble(input));
+        if (!input.equals("0")){
+            result = fistVal.divide(BigDecimal.valueOf(100));
+        }
+        return String.valueOf(result);
+    }
+
 
 }

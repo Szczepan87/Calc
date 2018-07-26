@@ -7,13 +7,13 @@ import android.widget.TextView;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView resultTextView;
-    String operation = "0";
+    String operationString = "0";
 
+    Operation operation;
     private final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
     private final int ROUND = 10;
     private BigDecimal result;
@@ -30,38 +30,38 @@ public class MainActivity extends AppCompatActivity {
 
     //sprawdza czy poprzedni znak jest liczbą
     private boolean isOperator() {
-        operation = String.valueOf(resultTextView.getText());
-        if (operation.charAt(resultTextView.length() - 1) == '/')
+        operationString = String.valueOf(resultTextView.getText());
+        if (operationString.charAt(resultTextView.length() - 1) == '/')
             return true;
-        else if (operation.charAt(resultTextView.length() - 1) == '*')
+        else if (operationString.charAt(resultTextView.length() - 1) == '*')
             return true;
-        else if (operation.charAt(resultTextView.length() - 1) == '-')
+        else if (operationString.charAt(resultTextView.length() - 1) == '-')
             return true;
-        else if (operation.charAt(resultTextView.length() - 1) == '+')
+        else if (operationString.charAt(resultTextView.length() - 1) == '+')
             return true;
-        else if (operation.charAt(resultTextView.length() - 1) == '.')
+        else if (operationString.charAt(resultTextView.length() - 1) == '.')
             return true;
-        else if (operation.charAt(resultTextView.length() - 1) == ',')
+        else if (operationString.charAt(resultTextView.length() - 1) == ',')
             return true;
         else return false;
     }
 
     //sprawdza zero
     private boolean isZero() {
-        if (operation.equals("0") && resultTextView.getText().equals("0"))
+        if (operationString.equals("0") && resultTextView.getText().equals("0"))
             return true;
         else return false;
     }
 
     //sprawdza, czy na ekranie nie ma operatora
     private boolean hasNonOperator() {
-        if (operation.contains("+"))
+        if (operationString.contains("+"))
             return false;
-        else if (operation.contains("-"))
+        else if (operationString.contains("-"))
             return false;
-        else if (operation.contains("*"))
+        else if (operationString.contains("*"))
             return false;
-        else if (operation.contains("/"))
+        else if (operationString.contains("/"))
             return false;
         return true;
     }
@@ -92,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
 
     //dokleja znak do stringa
     private void updateResultTextView(String text) {
-        operation = String.valueOf(resultTextView.getText());
-        operation = String.format("%s%s", String.valueOf(operation), text);
-        resultTextView.setText(operation);
+        operationString = String.valueOf(resultTextView.getText());
+        operationString = String.format("%s%s", String.valueOf(operationString), text);
+        resultTextView.setText(operationString);
     }
 
     //warunkuje jaki znak jest dodawany do stringa
@@ -135,41 +135,33 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addZero(View view) {
-        if (operation.charAt(0) != '0')
+        if (operationString.charAt(0) != '0')
             updateResultTextView("0");
     }
 
     //ustawia dziesiętną reprezentację procenta(dzieli na 100)
     public void makePercent(View view) {
-        if (!isZero()) {
-            operation = String.valueOf(resultTextView.getText());
-            if (!isOperator() && hasNonOperator()) {
-                result = new BigDecimal(Double.valueOf(operation)).divide(BigDecimal.valueOf(100));
-                result = result.setScale(ROUND, ROUNDING_MODE);// zaokrąglenie do 10 miejsc po przecinku
-                operation = String.valueOf(result);
-                resultTextView.setText(operation);
-            }
-        }
+        resultTextView.setText(operation.percent(resultTextView));
     }
 
     //tworzy pierwiastek kwadratowy z wyniku
     public void makeSQRT(View view) {
         if (hasNonOperator()) {
-            operation = resultTextView.getText().toString();
-            result = new BigDecimal(Math.sqrt(Double.valueOf(operation)));
+            operationString = resultTextView.getText().toString();
+            result = new BigDecimal(Math.sqrt(Double.valueOf(operationString)));
             result = result.setScale(ROUND, ROUNDING_MODE);
-            operation = String.valueOf(result);
-            resultTextView.setText(operation);
+            operationString = String.valueOf(result);
+            resultTextView.setText(operationString);
         }
     }
 
     //tworzy kwadrat z wyniku
     public void makeSquare(View view) {
         if (hasNonOperator()) {
-            operation = resultTextView.getText().toString();
-            result = new BigDecimal(Math.pow(Double.valueOf(operation), 2));
-            operation = String.valueOf(result);
-            resultTextView.setText(operation);
+            operationString = resultTextView.getText().toString();
+            result = new BigDecimal(Math.pow(Double.valueOf(operationString), 2));
+            operationString = String.valueOf(result);
+            resultTextView.setText(operationString);
         }
     }
 
