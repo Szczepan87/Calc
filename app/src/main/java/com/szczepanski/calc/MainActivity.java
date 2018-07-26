@@ -11,9 +11,8 @@ import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
 
-    NumberFormat numberFormat = NumberFormat.getNumberInstance();
     private TextView resultTextView;
-    String stringResutValue;
+    String operation = "0";
 
     private final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
     private final int ROUND = 10;
@@ -27,40 +26,42 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         resultTextView = findViewById(R.id.resultTextView);
-
     }
 
     //sprawdza czy poprzedni znak jest liczbą
     private boolean isOperator() {
-        if (stringResutValue.charAt(resultTextView.length() - 1) == '/')
+        operation = String.valueOf(resultTextView.getText());
+        if (operation.charAt(resultTextView.length() - 1) == '/')
             return true;
-        else if (stringResutValue.charAt(resultTextView.length() - 1) == '*')
+        else if (operation.charAt(resultTextView.length() - 1) == '*')
             return true;
-        else if (stringResutValue.charAt(resultTextView.length() - 1) == '-')
+        else if (operation.charAt(resultTextView.length() - 1) == '-')
             return true;
-        else if (stringResutValue.charAt(resultTextView.length() - 1) == '+')
+        else if (operation.charAt(resultTextView.length() - 1) == '+')
             return true;
-        else if (stringResutValue.charAt(resultTextView.length() - 1) == '.')
+        else if (operation.charAt(resultTextView.length() - 1) == '.')
             return true;
-        else if (stringResutValue.charAt(resultTextView.length() - 1) == ',')
+        else if (operation.charAt(resultTextView.length() - 1) == ',')
             return true;
         else return false;
     }
 
     //sprawdza zero
     private boolean isZero() {
-        return result != null && !resultTextView.getText().equals("");
+        if (operation.equals("0") && resultTextView.getText().equals("0"))
+            return true;
+        else return false;
     }
 
     //sprawdza, czy na ekranie nie ma operatora
     private boolean hasNonOperator() {
-        if (resultTextView.getText().toString().contains("+"))
+        if (operation.contains("+"))
             return false;
-        else if (resultTextView.getText().toString().contains("-"))
+        else if (operation.contains("-"))
             return false;
-        else if (resultTextView.getText().toString().contains("*"))
+        else if (operation.contains("*"))
             return false;
-        else if (resultTextView.getText().toString().contains("/"))
+        else if (operation.contains("/"))
             return false;
         return true;
     }
@@ -91,9 +92,9 @@ public class MainActivity extends AppCompatActivity {
 
     //dokleja znak do stringa
     private void updateResultTextView(String text) {
-        stringResutValue = String.valueOf(resultTextView.getText());
-        stringResutValue = String.format("%s%s", String.valueOf(stringResutValue), text);
-        resultTextView.setText(stringResutValue);
+        operation = String.valueOf(resultTextView.getText());
+        operation = String.format("%s%s", String.valueOf(operation), text);
+        resultTextView.setText(operation);
     }
 
     //warunkuje jaki znak jest dodawany do stringa
@@ -134,36 +135,41 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addZero(View view) {
-        if (isZero())
+        if (operation.charAt(0) != '0')
             updateResultTextView("0");
     }
 
     //ustawia dziesiętną reprezentację procenta(dzieli na 100)
     public void makePercent(View view) {
-        if (!isOperator() && hasNonOperator()) {
-            stringResutValue = resultTextView.getText().toString().replace(",",".");
-            result = new BigDecimal(Double.valueOf(stringResutValue) / 100);
-            result = result.setScale(ROUND, ROUNDING_MODE);// zaokrąglenie do 10 miejsc po przecinku
-            stringResutValue = String.valueOf(result);
-            resultTextView.setText(stringResutValue);
+        if (!isZero()) {
+            operation = String.valueOf(resultTextView.getText());
+            if (!isOperator() && hasNonOperator()) {
+                result = new BigDecimal(Double.valueOf(operation)).divide(BigDecimal.valueOf(100));
+                result = result.setScale(ROUND, ROUNDING_MODE);// zaokrąglenie do 10 miejsc po przecinku
+                operation = String.valueOf(result);
+                resultTextView.setText(operation);
+            }
         }
     }
 
     //tworzy pierwiastek kwadratowy z wyniku
     public void makeSQRT(View view) {
-        if (!isOperator() && hasNonOperator()) {
-            resultTextView.setText(numberFormat.format(resultTextView.getText()));
-            result = new BigDecimal(Math.sqrt(Double.valueOf(String.valueOf(resultTextView))));
+        if (hasNonOperator()) {
+            operation = resultTextView.getText().toString();
+            result = new BigDecimal(Math.sqrt(Double.valueOf(operation)));
             result = result.setScale(ROUND, ROUNDING_MODE);
-            resultTextView.setText(numberFormat.format(String.valueOf(result).replace(".000000", "")));
+            operation = String.valueOf(result);
+            resultTextView.setText(operation);
         }
     }
 
     //tworzy kwadrat z wyniku
     public void makeSquare(View view) {
-        if (!isOperator() && hasNonOperator()) {
-            result = new BigDecimal(Math.pow(Double.valueOf(String.valueOf(resultTextView)), 2));
-            resultTextView.setText(String.valueOf(result));
+        if (hasNonOperator()) {
+            operation = resultTextView.getText().toString();
+            result = new BigDecimal(Math.pow(Double.valueOf(operation), 2));
+            operation = String.valueOf(result);
+            resultTextView.setText(operation);
         }
     }
 
@@ -232,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void equalsButton(View view) {
-        String number = String.valueOf(String.valueOf(resultTextView).substring(String.valueOf(resultTextView).indexOf(getOperator())+1));
+        String number = String.valueOf(String.valueOf(resultTextView).substring(String.valueOf(resultTextView).indexOf(getOperator()) + 1));
         BigDecimal secondVal = BigDecimal.valueOf(Double.valueOf(number));
         switch (getOperator()) {
             case "+":
