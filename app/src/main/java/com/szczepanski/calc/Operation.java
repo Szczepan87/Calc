@@ -5,57 +5,42 @@ import android.widget.TextView;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class Operation {
+public class Operation implements BasicCalcOperations{
 
-    private final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
-    private final int ROUND = 10;
-    private BigDecimal result;
-    private BigDecimal fistVal;
-    private BigDecimal secondVal;
-    private int operator;
+    private String onScreen;
+    private String operator;
 
-
-    //rozpoznaje operator
-    private void setOperator(char operator) {
-        if (operator == '+')
-            this.operator = 1;
-        else if (operator == '-')
-            this.operator = 2;
-        else if (operator == '*')
-            this.operator = 3;
-        else if (operator == '/')
-            this.operator = 4;
+    @Override
+    public String getOperator(String value) {
+        if (value.contains("+"))
+            this.operator = "+";
+        else if (value.contains("-"))
+            this.operator = "-";
+        else if (value.contains("*"))
+            this.operator = "*";
+        else if (value.contains("/"))
+            this.operator = "/";
+        return operator;
     }
 
-    private String getOperator() {
-        if (operator == 1)
-            return "+";
-        else if (operator == 2)
-            return "-";
-        else if (operator == 3)
-            return "*";
-        else if (operator == 4)
-            return "/";
-        else return "";
+    @Override
+    public String add(String value) {
+        String[] split = value.split(operator)
+        return null;
     }
 
-    public String add(TextView textView){
-        String[] variable = textView.getText().toString().split(getOperator());
-        fistVal = BigDecimal.valueOf(Double.parseDouble(variable[0]));
-        secondVal = BigDecimal.valueOf(Double.parseDouble(variable[1]));
-        result = fistVal.add(secondVal);
-
-        return String.valueOf(result);
+    @Override
+    public String subtract(String value) {
+        return null;
     }
 
-    public String percent(TextView textView){
-        String input = textView.getText().toString();
-        fistVal = BigDecimal.valueOf(Double.parseDouble(input));
-        if (!input.equals("0")){
-            result = fistVal.divide(BigDecimal.valueOf(100));
-        }
-        return String.valueOf(result);
+    @Override
+    public String multiply(String value) {
+        return null;
     }
 
-
+    @Override
+    public String divide(String value) {
+        return null;
+    }
 }
