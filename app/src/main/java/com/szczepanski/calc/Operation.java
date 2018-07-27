@@ -1,17 +1,18 @@
 package com.szczepanski.calc;
 
-import android.widget.TextView;
-
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
-public class Operation implements BasicCalcOperations{
+public class Operation implements BasicCalcOperations {
 
-    private String onScreen;
     private String operator;
+    private BigDecimal firstVal;
+    private BigDecimal result;
 
-    @Override
-    public String getOperator(String value) {
+    private String getOperator() {
+        return "\\" + operator;
+    }
+
+    private void setOperator(String value) {
         if (value.contains("+"))
             this.operator = "+";
         else if (value.contains("-"))
@@ -20,13 +21,27 @@ public class Operation implements BasicCalcOperations{
             this.operator = "*";
         else if (value.contains("/"))
             this.operator = "/";
-        return operator;
+    }
+
+    private String cutZeroes(String input) {
+        if (!input.contains(".") || !input.contains(","))
+            return input;
+        for (int i = input.length() - 1; i <= 0; i--) {
+            if (input.charAt(i) != '0' || input.charAt(i) == '.' || input.charAt(i) == ',')
+                break;
+            if (input.charAt(i) == '0')
+                input = String.valueOf(new StringBuilder().deleteCharAt(i));
+        }
+        return input;
     }
 
     @Override
     public String add(String value) {
-        String[] split = value.split(operator)
-        return null;
+        setOperator(value);
+        String[] split = value.split(getOperator());
+        firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
+        result = firstVal.add(BigDecimal.valueOf(Double.parseDouble(split[1])));
+        return cutZeroes(String.valueOf(result));
     }
 
     @Override

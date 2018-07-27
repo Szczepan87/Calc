@@ -1,21 +1,15 @@
 package com.szczepanski.calc;
 
-import android.widget.TextView;
-
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class OperationTest {
 
-    private TextView textView =  Mockito.mock(TextView.class);
+    private Operation operation = new Operation();
 
     @Test
     public void addingTest() {
-        Operation operation = new Operation();
-        textView.setText("2+3");
-        assertEquals("5", operation.add(textView));
+        assertEquals("5", operation.add("2+3"));
     }
 }

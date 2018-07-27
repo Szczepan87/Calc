@@ -1,7 +1,7 @@
 package com.szczepanski.calc;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
     //ustawia dziesiętną reprezentację procenta(dzieli na 100)
     public void makePercent(View view) {
-        resultTextView.setText(operation.percent(resultTextView));
+        //resultTextView.setText(operation.percent(resultTextView));
     }
 
     //tworzy pierwiastek kwadratowy z wyniku

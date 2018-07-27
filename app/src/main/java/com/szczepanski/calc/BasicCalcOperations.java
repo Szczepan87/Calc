@@ -9,6 +9,4 @@ public interface BasicCalcOperations {
     String multiply(String value);
 
     String divide(String value);
-
-    String getOperator(String value);
 }
