@@ -27,4 +27,24 @@ public class OperationTest {
     public void addingNegativeAndPositiveTest() {
         assertEquals("0", operation.add("-2+2"));
     }
+
+    @Test
+    public void subtractingStandardTest() {
+        assertEquals("1", operation.subtract("3-2"));
+    }
+
+    @Test
+    public void subtractingNegativesTest() {
+        assertEquals("-5", operation.subtract("-2--3"));
+    }
+
+    @Test
+    public void subtractingZeroesTest() {
+        assertEquals("0", operation.subtract("0-0"));
+    }
+
+    @Test
+    public void subtractingNegativeAndPositiveTest() {
+        assertEquals("-4", operation.subtract("-2-2"));
+    }
 }
