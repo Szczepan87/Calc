@@ -15,7 +15,7 @@ public class OperationTest {
 
     @Test
     public void addingNegativesTest() {
-        assertEquals("-5", operation.add("-2+-3"));
+        assertEquals("1", operation.add("-2+3"));
     }
 
     @Test
@@ -35,7 +35,7 @@ public class OperationTest {
 
     @Test
     public void subtractingNegativesTest() {
-        assertEquals("-5", operation.subtract("-2--3"));
+        assertEquals("-5", operation.subtract("-2-3"));
     }
 
     @Test
