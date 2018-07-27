@@ -24,15 +24,30 @@ public class Operation implements BasicCalcOperations {
     }
 
     private String cutZeroes(String input) {
-        if (!input.contains(".") || !input.contains(","))
+        if (isNotDecimal(input))
             return input;
-        for (int i = input.length() - 1; i <= 0; i--) {
-            if (input.charAt(i) != '0' || input.charAt(i) == '.' || input.charAt(i) == ',')
-                break;
-            if (input.charAt(i) == '0')
-                input = String.valueOf(new StringBuilder().deleteCharAt(i));
+        else {
+            for (int i = input.length() - 1; i >= 0; i--) {
+                if (input.charAt(input.length()-1)=='.' || input.charAt(input.length() - 1) == ','){
+                    input = String.valueOf(new StringBuilder(input).deleteCharAt(input.length()-1));
+                    break;
+                }
+                if (input.charAt(i) != '0') {
+                    break;
+                }
+                input = String.valueOf(new StringBuilder(input).deleteCharAt(i));
+            }
         }
         return input;
+    }
+
+    private boolean isNotDecimal(String value) {
+        if (value.contains("."))
+            return false;
+        else if (value.contains(","))
+            return false;
+        else return true;
+
     }
 
     @Override
