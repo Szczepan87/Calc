@@ -15,22 +15,16 @@ public class Operation implements BasicCalcOperations {
 
     private void setOperator(String value) {
         if (value.charAt(0) == '-') {
-            if (value.contains("+"))
-                this.operator = "+";
-            else if (value.contains("*"))
-                this.operator = "*";
-            else if (value.contains("/"))
-                this.operator = "/";
-        } else {
-            if (value.contains("+"))
-                this.operator = "+";
-            else if (value.contains("-"))
-                this.operator = "-";
-            else if (value.contains("*"))
-                this.operator = "*";
-            else if (value.contains("/"))
-                this.operator = "/";
+            value = value.substring(1);
         }
+        if (value.contains("+"))
+            this.operator = "+";
+        else if (value.contains("-"))
+            this.operator = "-";
+        else if (value.contains("*"))
+            this.operator = "*";
+        else if (value.contains("/"))
+            this.operator = "/";
     }
 
     private String cutZeroes(String input) {
