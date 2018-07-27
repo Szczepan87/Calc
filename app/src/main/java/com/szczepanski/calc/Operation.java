@@ -1,6 +1,7 @@
 package com.szczepanski.calc;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Operation implements BasicCalcOperations {
 
@@ -79,6 +80,12 @@ public class Operation implements BasicCalcOperations {
 
     @Override
     public String divide(String value) {
-        return null;
+        setOperator(value);
+        String[] split = value.split(getOperator());
+        if (split[1].equals("0") || split[1].equals("") || split[1] == null)
+            return "ERR!";
+        firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
+        result = firstVal.divide(BigDecimal.valueOf(Double.parseDouble(split[1])),10,RoundingMode.HALF_UP);
+        return cutZeroes(String.valueOf(result));
     }
 }
