@@ -47,4 +47,24 @@ public class OperationTest {
     public void subtractingNegativeAndPositiveTest() {
         assertEquals("-4", operation.subtract("-2-2"));
     }
+
+    @Test
+    public void multiplyingStandardTest() {
+        assertEquals("6", operation.multiply("2*3"));
+    }
+
+    @Test
+    public void multiplyingNegativesTest() {
+        assertEquals("6", operation.multiply("-2*-3"));
+    }
+
+    @Test
+    public void multiplyingZeroesTest() {
+        assertEquals("0", operation.multiply("0*0"));
+    }
+
+    @Test
+    public void multiplyingNegativeAndPositiveTest() {
+        assertEquals("-4", operation.multiply("-2*2"));
+    }
 }

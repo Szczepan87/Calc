@@ -70,7 +70,11 @@ public class Operation implements BasicCalcOperations {
 
     @Override
     public String multiply(String value) {
-        return null;
+        setOperator(value);
+        String[] split = value.split(getOperator());
+        firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
+        result = firstVal.multiply(BigDecimal.valueOf(Double.parseDouble(split[1])));
+        return cutZeroes(String.valueOf(result));
     }
 
     @Override
