@@ -92,4 +92,19 @@ public class Operation implements BasicCalcOperations {
         result = firstVal.divide(BigDecimal.valueOf(Double.parseDouble(split[1])), 10, RoundingMode.HALF_UP);
         return cutZeroes(String.valueOf(result));
     }
+
+    public String squareRoot(String value){
+        result = BigDecimal.valueOf(Math.sqrt(Double.parseDouble(value)));
+        return cutZeroes(String.valueOf(result));
+    }
+
+    public String square(String value){
+        result = BigDecimal.valueOf(Math.pow(Double.parseDouble(value),2));
+        return cutZeroes(String.valueOf(result));
+    }
+
+    public String negate(String value) {
+        result = BigDecimal.valueOf(Double.parseDouble(value)).negate();
+        return cutZeroes(String.valueOf(result));
+    }
 }

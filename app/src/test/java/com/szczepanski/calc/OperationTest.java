@@ -82,4 +82,9 @@ public class OperationTest {
     public void dividingNegativeAndPositiveTest() {
         assertEquals("-1", operation.divide("-2/2"));
     }
+
+    @Test
+    public void squareRootTest() {
+        assertEquals("5", operation.squareRoot("25"));
+    }
 }
