@@ -17,9 +17,9 @@ public class Operation implements BasicCalcOperations {
         if (value.charAt(0) == '-') {
             value = value.substring(1);
         }
-        if (value.contains("+"))
+        if (value.contains("+")) {
             this.operator = "+";
-        else if (value.contains("*")) {
+        } else if (value.contains("*")) {
             this.operator = "*";
         } else if (value.contains("/")) {
             this.operator = "/";
@@ -28,9 +28,9 @@ public class Operation implements BasicCalcOperations {
     }
 
     private String cutZeroes(String input) {
-        if (isNotDecimal(input))
+        if (isNotDecimal(input)) {
             return input;
-        else {
+        } else {
             for (int i = input.length() - 1; i >= 0; i--) {
                 if (input.charAt(input.length() - 1) == '.' || input.charAt(input.length() - 1) == ',') {
                     input = String.valueOf(new StringBuilder(input).deleteCharAt(input.length() - 1));
@@ -46,11 +46,7 @@ public class Operation implements BasicCalcOperations {
     }
 
     private boolean isNotDecimal(String value) {
-        if (value.contains("."))
-            return false;
-        else if (value.contains(","))
-            return false;
-        else return true;
+        return !value.contains(".") && !value.contains(",");
 
     }
 

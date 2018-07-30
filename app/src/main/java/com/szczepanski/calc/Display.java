@@ -15,18 +15,16 @@ public class Display {
         return false;
     }
 
-    public boolean isProperInput(String input) {
+    private boolean isProperInput(String input) {
         char[] inputArr = input.toCharArray();
         int counter = 0;
-        for (int i = 0; i < inputArr.length; i++) {
-            for (int j = 0; j < properInput.length; j++) {
-                if (inputArr[i] == properInput[j])
+        for (char anInputArr : inputArr) {
+            for (char aProperInput : properInput) {
+                if (anInputArr == aProperInput)
                     counter++;
             }
         }
-        if (counter == input.length())
-            return true;
-        else return false;
+        return counter == input.length();
     }
 
     public boolean isZero(String input) {
