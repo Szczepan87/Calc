@@ -19,12 +19,14 @@ public class Operation implements BasicCalcOperations {
         }
         if (value.contains("+"))
             this.operator = "+";
+        else if (value.contains("*")) {
+            this.operator = "*";
+        }
+        else if (value.contains("/")) {
+            this.operator = "/";
+        }
         else if (value.contains("-"))
             this.operator = "-";
-        else if (value.contains("*"))
-            this.operator = "*";
-        else if (value.contains("/"))
-            this.operator = "/";
     }
 
     private String cutZeroes(String input) {
