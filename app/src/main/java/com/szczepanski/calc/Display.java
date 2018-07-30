@@ -11,4 +11,14 @@ public class Display {
         }
         return false;
     }
+
+    public boolean isZero(String input){
+        return input.equals("0");
+    }
+
+    public String updateDisplay(String onScreen, String value){
+        onScreen += value;
+
+        return onScreen;
+    }
 }
