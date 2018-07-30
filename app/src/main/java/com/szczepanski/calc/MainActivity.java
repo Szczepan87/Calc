@@ -21,48 +21,48 @@ public class MainActivity extends AppCompatActivity {
 
     //warunkuje jaki znak jest dodawany do stringa
     public void addOne(View view) {
-        display.updateDisplay(resultTextView.getText().toString(),"1");
+        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(),"1"));
     }
 
     public void addTwo(View view) {
-        display.updateDisplay(resultTextView.getText().toString(),"2");
+        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(),"2"));
     }
 
     public void addThree(View view) {
-        display.updateDisplay(resultTextView.getText().toString(),"3");
+        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(),"3"));
     }
 
     public void addFour(View view) {
-        display.updateDisplay(resultTextView.getText().toString(),"4");
+        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(),"4"));
     }
 
     public void addFive(View view) {
-        display.updateDisplay(resultTextView.getText().toString(),"5");
+        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(),"5"));
     }
 
     public void addSix(View view) {
-        display.updateDisplay(resultTextView.getText().toString(),"6");
+        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(),"6"));
     }
 
     public void addSeven(View view) {
-        display.updateDisplay(resultTextView.getText().toString(),"7");
+        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(),"7"));
     }
 
     public void addEight(View view) {
-        display.updateDisplay(resultTextView.getText().toString(),"8");
+        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(),"8"));
     }
 
     public void addNine(View view) {
-        display.updateDisplay(resultTextView.getText().toString(),"9");
+        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(),"9"));
     }
 
     public void addZero(View view) {
-        display.updateDisplay(resultTextView.getText().toString(),"0");
+        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(),"0"));
     }
 
     //ustawia dziesiętną reprezentację procenta(dzieli na 100)
     public void makePercent(View view) {
-        //resultTextView.setText(operation.percent(resultTextView));
+
     }
 
     //tworzy pierwiastek kwadratowy z wyniku
@@ -82,12 +82,12 @@ public class MainActivity extends AppCompatActivity {
 
     //kasuje wynik i zeruje stringa
     public void CEButton(View view) {
-        resultTextView.setText(0);
+        resultTextView.setText("0");
     }
 
     //kasuje ostatnią operację, która jest wyświetlana, lecz wynik zostaje niezmieniony
     public void CButton(View view) {
-        resultTextView.setText(0);
+        resultTextView.setText("0");
     }
 
     public void backspaceButton(View view) {
