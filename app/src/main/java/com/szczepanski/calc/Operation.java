@@ -21,11 +21,9 @@ public class Operation implements BasicCalcOperations {
             this.operator = "+";
         else if (value.contains("*")) {
             this.operator = "*";
-        }
-        else if (value.contains("/")) {
+        } else if (value.contains("/")) {
             this.operator = "/";
-        }
-        else if (value.contains("-"))
+        } else if (value.contains("-"))
             this.operator = "-";
     }
 
@@ -69,7 +67,12 @@ public class Operation implements BasicCalcOperations {
     public String subtract(String value) {
         setOperator(value);
         String[] split = value.split(getOperator());
-        firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
+        if (split[0].equals("")) {
+            split = value.substring(1).split(getOperator());
+            firstVal = BigDecimal.valueOf(Double.parseDouble(split[0])).negate();
+        } else {
+            firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
+        }
         result = firstVal.subtract(BigDecimal.valueOf(Double.parseDouble(split[1])));
         return cutZeroes(String.valueOf(result));
     }
