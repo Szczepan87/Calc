@@ -29,6 +29,11 @@ public class OperationTest {
     }
 
     @Test
+    public void decimalAddingTest() {
+        assertEquals("5", operation.add("2.25+2.75"));
+    }
+
+    @Test
     public void addingNegativeAndPositiveTest() {
         assertEquals("0", operation.add("-2+2"));
     }
@@ -51,6 +56,11 @@ public class OperationTest {
     @Test
     public void badInputSubtractTest() {
         assertEquals("ERR!", operation.divide("ERR!-2"));
+    }
+
+    @Test
+    public void decimalSubtractingTest() {
+        assertEquals("0.5", operation.subtract("2.25-2.75"));
     }
 
     @Test
@@ -79,6 +89,11 @@ public class OperationTest {
     }
 
     @Test
+    public void decimalMultiplyingTest() {
+        assertEquals("6.1875", operation.multiply("2.25*2.75"));
+    }
+
+    @Test
     public void dividingStandardTest() {
         assertEquals("0.6666666667", operation.divide("2/3"));
     }
@@ -99,6 +114,11 @@ public class OperationTest {
     }
 
     @Test
+    public void decimalDividingTest() {
+        assertEquals("0.8181818182", operation.divide("2.25/2.75"));
+    }
+
+    @Test
     public void badInputDivideTest() {
         assertEquals("ERR!", operation.divide("ERR!/2"));
     }
@@ -116,5 +136,50 @@ public class OperationTest {
     @Test
     public void badInputSquareRootTest() {
         assertEquals("ERR!", operation.squareRoot("ERR!"));
+    }
+
+    @Test
+    public void squareRootZeroTest() {
+        assertEquals("0", operation.squareRoot("0"));
+    }
+
+    @Test
+    public void squareNormalTest() {
+        assertEquals("25", operation.square("5"));
+    }
+
+    @Test
+    public void squareNegativeTest() {
+        assertEquals("25", operation.square("-5"));
+    }
+
+    @Test
+    public void squareZeroTest() {
+        assertEquals("0", operation.square("0"));
+    }
+
+    @Test
+    public void badInputSquareTest() {
+        assertEquals("ERR!", operation.square("ERR!"));
+    }
+
+    @Test
+    public void negatePositiveTest() {
+        assertEquals("5", operation.square("-5"));
+    }
+
+    @Test
+    public void negateNegativeTest() {
+        assertEquals("-5", operation.negate("5"));
+    }
+
+    @Test
+    public void negateZeroTest() {
+        assertEquals("0", operation.negate("0"));
+    }
+
+    @Test
+    public void badInputNegateTest() {
+        assertEquals("ERR!", operation.negate("ERR!"));
     }
 }
