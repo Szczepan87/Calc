@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     //ustawia dziesiętną reprezentację procenta(dzieli na 100)
     public void makePercent(View view) {
-
+        resultTextView.setText(operation.divide(resultTextView.getText().toString()+ "/100"));
     }
 
     //tworzy pierwiastek kwadratowy z wyniku
@@ -100,19 +100,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void divideButton(View view) {
+        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), "/"));
 
     }
 
     public void multiplyButton(View view) {
+        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), "*"));
 
     }
 
     public void minusButton(View view) {
-
+        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), "-"));
     }
 
     public void plusButton(View view) {
-
+        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), "+"));
     }
 
     public void equalsButton(View view) {

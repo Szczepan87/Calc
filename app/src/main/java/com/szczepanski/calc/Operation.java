@@ -8,6 +8,7 @@ public class Operation implements BasicCalcOperations {
     private String operator;
     private BigDecimal firstVal;
     private BigDecimal result;
+    private Display display = new Display();
 
     private String getOperator() {
         return "\\" + operator;
@@ -94,6 +95,8 @@ public class Operation implements BasicCalcOperations {
     }
 
     public String squareRoot(String value){
+        if(value.charAt(0)=='-' && display.isProperInput(value))
+            return "ERR!";
         result = BigDecimal.valueOf(Math.sqrt(Double.parseDouble(value)));
         return cutZeroes(String.valueOf(result));
     }

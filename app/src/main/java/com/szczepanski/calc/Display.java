@@ -15,7 +15,7 @@ public class Display {
         return false;
     }
 
-    private boolean isProperInput(String input) {
+    public boolean isProperInput(String input) {
         char[] inputArr = input.toCharArray();
         int counter = 0;
         for (char anInputArr : inputArr) {

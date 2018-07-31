@@ -24,6 +24,11 @@ public class OperationTest {
     }
 
     @Test
+    public void badInputAddTest() {
+        assertEquals("ERR!", operation.divide("ERR!+2"));
+    }
+
+    @Test
     public void addingNegativeAndPositiveTest() {
         assertEquals("0", operation.add("-2+2"));
     }
@@ -41,6 +46,11 @@ public class OperationTest {
     @Test
     public void subtractingZeroesTest() {
         assertEquals("0", operation.subtract("0-0"));
+    }
+
+    @Test
+    public void badInputSubtractTest() {
+        assertEquals("ERR!", operation.divide("ERR!-2"));
     }
 
     @Test
@@ -64,6 +74,11 @@ public class OperationTest {
     }
 
     @Test
+    public void badInputMultiplyTest() {
+        assertEquals("ERR!", operation.divide("ERR!*2"));
+    }
+
+    @Test
     public void dividingStandardTest() {
         assertEquals("0.6666666667", operation.divide("2/3"));
     }
@@ -84,7 +99,22 @@ public class OperationTest {
     }
 
     @Test
+    public void badInputDivideTest() {
+        assertEquals("ERR!", operation.divide("ERR!/2"));
+    }
+
+    @Test
     public void squareRootTest() {
         assertEquals("5", operation.squareRoot("25"));
+    }
+
+    @Test
+    public void negativeSquareRootTest() {
+        assertEquals("ERR!", operation.squareRoot("-5"));
+    }
+
+    @Test
+    public void badInputSquareRootTest() {
+        assertEquals("ERR!", operation.squareRoot("ERR!"));
     }
 }
