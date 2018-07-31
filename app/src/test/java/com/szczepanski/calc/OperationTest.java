@@ -60,7 +60,7 @@ public class OperationTest {
 
     @Test
     public void decimalSubtractingTest() {
-        assertEquals("0.5", operation.subtract("2.25-2.75"));
+        assertEquals("-0.5", operation.subtract("2.25-2.75"));
     }
 
     @Test

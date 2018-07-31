@@ -84,4 +84,9 @@ public class DisplayTest {
     public void checkWrongInputTest() {
         assertEquals("123+", display.updateDisplay("123+", "abc"));
     }
+
+    @Test
+    public void checkWrongInputTest2() {
+        assertFalse(display.isProperInput("ERR!"));
+    }
 }
