@@ -6,7 +6,6 @@ import java.math.RoundingMode;
 public class Operation {
 
     private String operator;
-    private BigDecimal firstVal;
     private BigDecimal result;
     private Display display = new Display();
 
@@ -56,6 +55,7 @@ public class Operation {
             return "ERR!";
         setOperator(value);
         String[] split = value.split(getOperator());
+        BigDecimal firstVal;
         if (split[0].equals("")) {
             split = value.substring(1).split(getOperator());
             firstVal = BigDecimal.valueOf(Double.parseDouble(split[0])).negate();

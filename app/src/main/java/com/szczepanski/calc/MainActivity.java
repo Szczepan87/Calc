@@ -99,12 +99,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void backspaceButton(View view) {
+        if (resultTextView.length() <= 1) {
+            resultTextView.setText("0");
+        }
         if (!display.isZero(String.valueOf(resultTextView.getText())) &&
                 !String.valueOf(resultTextView.getText()).equals("ERR!")) {
+
             StringBuilder builder = new StringBuilder(String.valueOf(resultTextView.getText()));
-            if (resultTextView.getText().length() == 0) {
-                resultTextView.setText("0");
-            }
+
             resultTextView.setText(String.valueOf(builder.deleteCharAt(resultTextView.getText().length() - 1)));
         }
     }
