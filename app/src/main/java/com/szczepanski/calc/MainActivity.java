@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     //ustawia dziesiętną reprezentację procenta(dzieli na 100)
     public void makePercent(View view) {
-        resultTextView.setText(operation.divide(resultTextView.getText().toString()+ "/100"));
+        resultTextView.setText(operation.divide(resultTextView.getText().toString() + "/100"));
     }
 
     //tworzy pierwiastek kwadratowy z wyniku
@@ -92,11 +92,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void backspaceButton(View view) {
-        StringBuilder builder = new StringBuilder(String.valueOf(resultTextView.getText()));
-        if (resultTextView.getText().length() == 0) {
-            resultTextView.setText("0");
+        if (!display.isZero(String.valueOf(resultTextView.getText())) &&
+                !String.valueOf(resultTextView.getText()).equals("ERR!")) {
+            StringBuilder builder = new StringBuilder(String.valueOf(resultTextView.getText()));
+            if (resultTextView.getText().length() == 0) {
+                resultTextView.setText("0");
+            }
+            resultTextView.setText(String.valueOf(builder.deleteCharAt(resultTextView.getText().length() - 1)));
         }
-        resultTextView.setText(String.valueOf(builder.deleteCharAt(resultTextView.getText().length() - 1)));
     }
 
     public void divideButton(View view) {
