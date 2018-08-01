@@ -25,7 +25,7 @@ public class OperationTest {
 
     @Test
     public void badInputAddTest() {
-        assertEquals("ERR!", operation.divide("ERR!+2"));
+        assertEquals("ERR!", operation.add("ERR!+2"));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class OperationTest {
 
     @Test
     public void badInputSubtractTest() {
-        assertEquals("ERR!", operation.divide("ERR!-2"));
+        assertEquals("ERR!", operation.subtract("ERR!-2"));
     }
 
     @Test
@@ -85,7 +85,7 @@ public class OperationTest {
 
     @Test
     public void badInputMultiplyTest() {
-        assertEquals("ERR!", operation.divide("ERR!*2"));
+        assertEquals("ERR!", operation.multiply("ERR!*2"));
     }
 
     @Test
@@ -144,6 +144,11 @@ public class OperationTest {
     }
 
     @Test
+    public void badInputSquareRootTest2() {
+        assertEquals("ERR!", operation.squareRoot("2-"));
+    }
+
+    @Test
     public void squareNormalTest() {
         assertEquals("25", operation.square("5"));
     }
@@ -164,8 +169,13 @@ public class OperationTest {
     }
 
     @Test
+    public void badInputSquareTest2() {
+        assertEquals("ERR!", operation.square("2-"));
+    }
+
+    @Test
     public void negatePositiveTest() {
-        assertEquals("5", operation.square("-5"));
+        assertEquals("5", operation.negate("-5"));
     }
 
     @Test
@@ -182,4 +192,10 @@ public class OperationTest {
     public void badInputNegateTest() {
         assertEquals("ERR!", operation.negate("ERR!"));
     }
+
+    @Test
+    public void badInputNegateTest2() {
+        assertEquals("ERR!", operation.negate("2-"));
+    }
+
 }

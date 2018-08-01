@@ -53,6 +53,8 @@ public class Operation implements BasicCalcOperations {
 
     @Override
     public String add(String value) {
+        if (!display.isProperInput(value))
+            return "ERR!";
         setOperator(value);
         String[] split = value.split(getOperator());
         firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
@@ -62,6 +64,8 @@ public class Operation implements BasicCalcOperations {
 
     @Override
     public String subtract(String value) {
+        if (!display.isProperInput(value))
+            return "ERR!";
         setOperator(value);
         String[] split = value.split(getOperator());
         if (split[0].equals("")) {
@@ -76,6 +80,8 @@ public class Operation implements BasicCalcOperations {
 
     @Override
     public String multiply(String value) {
+        if (!display.isProperInput(value))
+            return "ERR!";
         setOperator(value);
         String[] split = value.split(getOperator());
         firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
@@ -85,6 +91,8 @@ public class Operation implements BasicCalcOperations {
 
     @Override
     public String divide(String value) {
+        if (!display.isProperInput(value))
+            return "ERR!";
         setOperator(value);
         String[] split = value.split(getOperator());
         if (split[1].equals("0") || split[1].equals("") || split[1] == null)
@@ -94,19 +102,23 @@ public class Operation implements BasicCalcOperations {
         return cutZeroes(String.valueOf(result));
     }
 
-    public String squareRoot(String value){
-        if(value.charAt(0)=='-' && display.isProperInput(value))
+    public String squareRoot(String value) {
+        if (value.charAt(0) == '-' || !display.isProperInput(value) || display.isLastCharAnOperator(value))
             return "ERR!";
         result = BigDecimal.valueOf(Math.sqrt(Double.parseDouble(value)));
         return cutZeroes(String.valueOf(result));
     }
 
-    public String square(String value){
-        result = BigDecimal.valueOf(Math.pow(Double.parseDouble(value),2));
+    public String square(String value) {
+        if (!display.isProperInput(value) || display.isLastCharAnOperator(value))
+            return "ERR!";
+        result = BigDecimal.valueOf(Math.pow(Double.parseDouble(value), 2));
         return cutZeroes(String.valueOf(result));
     }
 
     public String negate(String value) {
+        if (!display.isProperInput(value) || display.isLastCharAnOperator(value))
+            return "ERR!";
         result = BigDecimal.valueOf(Double.parseDouble(value)).negate();
         return cutZeroes(String.valueOf(result));
     }
