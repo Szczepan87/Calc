@@ -129,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void pointButton(View view) {
-        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), "."));
+        if (operation.isNotDecimal(String.valueOf(resultTextView.getText())))
+            resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), "."));
     }
 }

@@ -46,7 +46,7 @@ public class Operation implements BasicCalcOperations {
         return input;
     }
 
-    private boolean isNotDecimal(String value) {
+    public boolean isNotDecimal(String value) {
         return !value.contains(".") && !value.contains(",");
 
     }
@@ -99,6 +99,39 @@ public class Operation implements BasicCalcOperations {
             return "ERR!";
         firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
         result = firstVal.divide(BigDecimal.valueOf(Double.parseDouble(split[1])), 10, RoundingMode.HALF_UP);
+        return cutZeroes(String.valueOf(result));
+    }
+
+    public String makeCalculation(String value) {
+        if (!display.isProperInput(value))
+            return "ERR!";
+        setOperator(value);
+        String[] split = value.split(getOperator());
+        firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
+
+        switch (getOperator()) {
+            case "\\+":
+                result = firstVal.add(BigDecimal.valueOf(Double.parseDouble(split[1])));
+                break;
+            case "\\*":
+                result = firstVal.multiply(BigDecimal.valueOf(Double.parseDouble(split[1])));
+                break;
+            case "\\/":
+                if (split[1].equals("0") || split[1].equals("") || split[1] == null)
+                    return "ERR!";
+                else
+                    result = firstVal.divide(BigDecimal.valueOf(Double.parseDouble(split[1])), 10, RoundingMode.HALF_UP);
+                break;
+            case "\\-":
+                if (split[0].equals("")) {
+                    split = value.substring(1).split(getOperator());
+                    firstVal = BigDecimal.valueOf(Double.parseDouble(split[0])).negate();
+                } else {
+                    firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
+                }
+                result = firstVal.subtract(BigDecimal.valueOf(Double.parseDouble(split[1])));
+                break;
+        }
         return cutZeroes(String.valueOf(result));
     }
 

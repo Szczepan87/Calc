@@ -33,7 +33,7 @@ public class Display {
 
     public String updateDisplay(String onScreen, String value) {
         if (isProperInput(value)) {
-            if (isZero(onScreen)) {
+            if (isZero(onScreen)&& !value.equals(".")) {
                 onScreen = onScreen.replace("0", value);
             } else if (isLastCharAnOperator(onScreen) && isLastCharAnOperator(value)) {
                 onScreen = onScreen.replace(String.valueOf(onScreen.charAt(onScreen.length() - 1)), value);
