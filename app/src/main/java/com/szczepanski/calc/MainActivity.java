@@ -5,6 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView resultTextView;
@@ -62,7 +65,9 @@ public class MainActivity extends AppCompatActivity {
 
     //ustawia dziesiętną reprezentację procenta(dzieli na 100)
     public void makePercent(View view) {
-        resultTextView.setText(operation.divide(resultTextView.getText().toString() + "/100"));
+        BigDecimal result = BigDecimal.valueOf(Double.parseDouble(String.valueOf
+                (resultTextView.getText()))).divide(BigDecimal.valueOf(100), 10, RoundingMode.HALF_UP);
+        resultTextView.setText(String.valueOf(result));
     }
 
     //tworzy pierwiastek kwadratowy z wyniku
@@ -77,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
 
     //tworzy ułamek, którego mianownikiem jest wynik
     public void makeFraction(View view) {
-        resultTextView.setText(operation.divide("1/" + resultTextView.getText().toString()));
+        BigDecimal result = BigDecimal.valueOf(1.0).divide(BigDecimal.valueOf(Double.parseDouble
+                (String.valueOf(resultTextView.getText()))), 10, RoundingMode.HALF_UP);
+        resultTextView.setText(String.valueOf(result));
 
     }
 
@@ -121,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void equalsButton(View view) {
-
+        resultTextView.setText(operation.makeCalculation(String.valueOf(resultTextView.getText())));
     }
 
     public void negateButton(View view) {

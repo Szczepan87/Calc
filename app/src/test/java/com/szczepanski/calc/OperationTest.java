@@ -100,12 +100,12 @@ public class OperationTest {
 
     @Test
     public void dividingNegativesTest() {
-        assertEquals("2", operation.makeCalculation("-4*-2"));
+        assertEquals("2", operation.makeCalculation("-4/-2"));
     }
 
     @Test
     public void dividingZeroesTest() {
-        assertEquals("ERR!", operation.makeCalculation("0*0"));
+        assertEquals("ERR!", operation.makeCalculation("0/0"));
     }
 
     @Test
@@ -125,77 +125,76 @@ public class OperationTest {
 
     @Test
     public void squareRootTest() {
-        assertEquals("5", operation.makeCalculation("25"));
+        assertEquals("5", operation.squareRoot("25"));
     }
 
     @Test
     public void negativeSquareRootTest() {
-        assertEquals("ERR!", operation.makeCalculation("-5"));
+        assertEquals("ERR!", operation.squareRoot("-5"));
     }
 
     @Test
     public void badInputSquareRootTest() {
-        assertEquals("ERR!", operation.makeCalculation("ERR!"));
+        assertEquals("ERR!", operation.squareRoot("ERR!"));
     }
 
     @Test
     public void squareRootZeroTest() {
-        assertEquals("0", operation.makeCalculation("0"));
+        assertEquals("0", operation.squareRoot("0"));
     }
 
     @Test
     public void badInputSquareRootTest2() {
-        assertEquals("ERR!", operation.makeCalculation("2-"));
+        assertEquals("ERR!", operation.squareRoot("2-"));
     }
 
     @Test
     public void squareNormalTest() {
-        assertEquals("25", operation.makeCalculation("5"));
+        assertEquals("25", operation.square("5"));
     }
 
     @Test
     public void squareNegativeTest() {
-        assertEquals("25", operation.makeCalculation("-5"));
+        assertEquals("25", operation.square("-5"));
     }
 
     @Test
     public void squareZeroTest() {
-        assertEquals("0", operation.makeCalculation("0"));
+        assertEquals("0", operation.square("0"));
     }
 
     @Test
     public void badInputSquareTest() {
-        assertEquals("ERR!", operation.makeCalculation("ERR!"));
+        assertEquals("ERR!", operation.square("ERR!"));
     }
 
     @Test
     public void badInputSquareTest2() {
-        assertEquals("ERR!", operation.makeCalculation("2-"));
+        assertEquals("ERR!", operation.square("2-"));
     }
 
     @Test
     public void negatePositiveTest() {
-        assertEquals("5", operation.makeCalculation("-5"));
+        assertEquals("5", operation.negate("-5"));
     }
 
     @Test
     public void negateNegativeTest() {
-        assertEquals("-5", operation.makeCalculation("5"));
+        assertEquals("-5", operation.negate("5"));
     }
 
     @Test
     public void negateZeroTest() {
-        assertEquals("0", operation.makeCalculation("0"));
+        assertEquals("0", operation.negate("0"));
     }
 
     @Test
     public void badInputNegateTest() {
-        assertEquals("ERR!", operation.makeCalculation("ERR!"));
+        assertEquals("ERR!", operation.negate("ERR!"));
     }
 
     @Test
     public void badInputNegateTest2() {
-        assertEquals("ERR!", operation.makeCalculation("2-"));
+        assertEquals("ERR!", operation.negate("2-"));
     }
-
 }

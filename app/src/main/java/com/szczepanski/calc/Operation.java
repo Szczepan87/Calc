@@ -3,7 +3,7 @@ package com.szczepanski.calc;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class Operation implements BasicCalcOperations {
+public class Operation {
 
     private String operator;
     private BigDecimal firstVal;
@@ -51,19 +51,7 @@ public class Operation implements BasicCalcOperations {
 
     }
 
-    @Override
-    public String add(String value) {
-        if (!display.isProperInput(value))
-            return "ERR!";
-        setOperator(value);
-        String[] split = value.split(getOperator());
-        firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
-        result = firstVal.add(BigDecimal.valueOf(Double.parseDouble(split[1])));
-        return cutZeroes(String.valueOf(result));
-    }
-
-    @Override
-    public String subtract(String value) {
+    public String makeCalculation(String value) {
         if (!display.isProperInput(value))
             return "ERR!";
         setOperator(value);
@@ -71,42 +59,7 @@ public class Operation implements BasicCalcOperations {
         if (split[0].equals("")) {
             split = value.substring(1).split(getOperator());
             firstVal = BigDecimal.valueOf(Double.parseDouble(split[0])).negate();
-        } else {
-            firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
-        }
-        result = firstVal.subtract(BigDecimal.valueOf(Double.parseDouble(split[1])));
-        return cutZeroes(String.valueOf(result));
-    }
-
-    @Override
-    public String multiply(String value) {
-        if (!display.isProperInput(value))
-            return "ERR!";
-        setOperator(value);
-        String[] split = value.split(getOperator());
-        firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
-        result = firstVal.multiply(BigDecimal.valueOf(Double.parseDouble(split[1])));
-        return cutZeroes(String.valueOf(result));
-    }
-
-    @Override
-    public String divide(String value) {
-        if (!display.isProperInput(value))
-            return "ERR!";
-        setOperator(value);
-        String[] split = value.split(getOperator());
-        if (split[1].equals("0") || split[1].equals("") || split[1] == null)
-            return "ERR!";
-        firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
-        result = firstVal.divide(BigDecimal.valueOf(Double.parseDouble(split[1])), 10, RoundingMode.HALF_UP);
-        return cutZeroes(String.valueOf(result));
-    }
-
-    public String makeCalculation(String value) {
-        if (!display.isProperInput(value))
-            return "ERR!";
-        setOperator(value);
-        String[] split = value.split(getOperator());
+        } else
         firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
 
         switch (getOperator()) {
@@ -123,12 +76,6 @@ public class Operation implements BasicCalcOperations {
                     result = firstVal.divide(BigDecimal.valueOf(Double.parseDouble(split[1])), 10, RoundingMode.HALF_UP);
                 break;
             case "\\-":
-                if (split[0].equals("")) {
-                    split = value.substring(1).split(getOperator());
-                    firstVal = BigDecimal.valueOf(Double.parseDouble(split[0])).negate();
-                } else {
-                    firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
-                }
                 result = firstVal.subtract(BigDecimal.valueOf(Double.parseDouble(split[1])));
                 break;
         }
