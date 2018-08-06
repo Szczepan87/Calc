@@ -46,6 +46,13 @@ public class Operation {
     }
 
     public boolean isNotDecimal(String value) {
+        final char[] deci = new char[]{'.',','};
+        final char[] valueArr = value.toCharArray();
+        int counter = 0;
+        for (int i = 0; i < valueArr.length; i++) {
+            if (valueArr[i] == deci[0] || valueArr[i] == deci[1])
+                counter++;
+        }
         return !value.contains(".") && !value.contains(",");
 
     }
@@ -79,6 +86,8 @@ public class Operation {
                 result = firstVal.subtract(BigDecimal.valueOf(Double.parseDouble(split[1])));
                 break;
         }
+        if (result == null)
+            return value;
         return cutZeroes(String.valueOf(result));
     }
 

@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     private Operation operation = new Operation();
     private Display display = new Display();
 
+    private boolean operatorClicked = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,19 +119,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void multiplyButton(View view) {
+        operatorClicked = true;
         resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), "*"));
 
     }
 
     public void minusButton(View view) {
+        operatorClicked = true;
         resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), "-"));
     }
 
     public void plusButton(View view) {
+        operatorClicked = true;
         resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), "+"));
     }
 
     public void equalsButton(View view) {
+        operatorClicked = true;
         resultTextView.setText(operation.makeCalculation(String.valueOf(resultTextView.getText())));
     }
 
@@ -138,7 +144,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void pointButton(View view) {
-        if (operation.isNotDecimal(String.valueOf(resultTextView.getText())))
+        if (operation.isNotDecimal(String.valueOf(resultTextView.getText())) || operatorClicked) {
             resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), "."));
+        }
     }
 }
+
