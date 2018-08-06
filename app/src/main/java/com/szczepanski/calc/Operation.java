@@ -88,6 +88,7 @@ public class Operation {
         }
         if (result == null)
             return value;
+        this.operator = null;
         return cutZeroes(String.valueOf(result));
     }
 
