@@ -46,14 +46,14 @@ public class Operation {
     }
 
     public boolean isNotDecimal(String value) {
-        final char[] deci = new char[]{'.',','};
+        final char[] deci = new char[]{'.', ','};
         final char[] valueArr = value.toCharArray();
         int counter = 0;
-        for (int i = 0; i < valueArr.length; i++) {
-            if (valueArr[i] == deci[0] || valueArr[i] == deci[1])
+        for (char aValueArr : valueArr) {
+            if (aValueArr == deci[0] || aValueArr == deci[1])
                 counter++;
         }
-        return !value.contains(".") && !value.contains(",");
+        return counter == 0;
 
     }
 
@@ -67,7 +67,7 @@ public class Operation {
             split = value.substring(1).split(getOperator());
             firstVal = BigDecimal.valueOf(Double.parseDouble(split[0])).negate();
         } else
-        firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
+            firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
 
         switch (getOperator()) {
             case "\\+":
