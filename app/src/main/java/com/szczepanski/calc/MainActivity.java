@@ -67,26 +67,42 @@ public class MainActivity extends AppCompatActivity {
 
     //ustawia dziesiętną reprezentację procenta(dzieli na 100)
     public void makePercent(View view) {
-        BigDecimal result = BigDecimal.valueOf(Double.parseDouble(String.valueOf
-                (resultTextView.getText()))).divide(BigDecimal.valueOf(100), 10, RoundingMode.HALF_UP);
-        resultTextView.setText(String.valueOf(result));
+        if (operation.isNumerical(String.valueOf(resultTextView.getText())))
+            resultTextView.setText(R.string.ERROR);
+        else {
+            BigDecimal result = BigDecimal.valueOf(Double.parseDouble(String.valueOf
+                    (resultTextView.getText()))).divide(BigDecimal.valueOf(100), 10, RoundingMode.HALF_UP);
+            resultTextView.setText(String.valueOf(result));
+        }
     }
 
     //tworzy pierwiastek kwadratowy z wyniku
     public void makeSQRT(View view) {
-        resultTextView.setText(operation.squareRoot(String.valueOf(resultTextView.getText())));
+        if (operation.isNumerical(String.valueOf(resultTextView.getText())))
+            resultTextView.setText(R.string.ERROR);
+        else {
+            resultTextView.setText(operation.squareRoot(String.valueOf(resultTextView.getText())));
+        }
     }
 
     //tworzy kwadrat z wyniku
     public void makeSquare(View view) {
-        resultTextView.setText(operation.square(String.valueOf(resultTextView.getText())));
+        if (operation.isNumerical(String.valueOf(resultTextView.getText())))
+            resultTextView.setText(R.string.ERROR);
+        else {
+            resultTextView.setText(operation.square(String.valueOf(resultTextView.getText())));
+        }
     }
 
     //tworzy ułamek, którego mianownikiem jest wynik
     public void makeFraction(View view) {
-        BigDecimal result = BigDecimal.valueOf(1.0).divide(BigDecimal.valueOf(Double.parseDouble
-                (String.valueOf(resultTextView.getText()))), 10, RoundingMode.HALF_UP);
-        resultTextView.setText(String.valueOf(result));
+        if (operation.isNumerical(String.valueOf(resultTextView.getText())))
+            resultTextView.setText(R.string.ERROR);
+        else {
+            BigDecimal result = BigDecimal.valueOf(1.0).divide(BigDecimal.valueOf(Double.parseDouble
+                    (String.valueOf(resultTextView.getText()))), 10, RoundingMode.HALF_UP);
+            resultTextView.setText(String.valueOf(result));
+        }
 
     }
 
@@ -136,6 +152,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void equalsButton(View view) {
         operatorClicked = true;
+        String onScreen = String.valueOf(resultTextView.getText());
+        if (display.isLastCharAnOperator(String.valueOf(onScreen)) || onScreen.charAt(onScreen.length() - 1) == '.')
+        {
+            resultTextView.setText(R.string.ERROR);
+        }
         resultTextView.setText(operation.makeCalculation(String.valueOf(resultTextView.getText())));
     }
 
