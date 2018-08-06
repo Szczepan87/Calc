@@ -24,7 +24,7 @@ public class Display {
         }
         if (counter >= 2)
             return false;
-        else if (counter == 1 && Character.isDigit(input.charAt(input.length() - 1)))
+        else if (counter == 1 && (Character.isDigit(input.charAt(input.length() - 1)) || isLastCharAnOperator(input)))
             return false;
         else if (input.charAt(input.length() - 1) == '.' || input.charAt(input.length() - 1) == ',')
             return false;
@@ -56,13 +56,9 @@ public class Display {
             } else if (value.equals(".") || value.equals(",")) {
                 if (canDecimalBeAdded(onScreen)) {
                     onScreen += value;
-                } else
-                    return onScreen;
-
-            } else {
-                onScreen += value;
-            }
-
+                }
+            } else
+                return onScreen+=value;
         }
         return onScreen;
     }

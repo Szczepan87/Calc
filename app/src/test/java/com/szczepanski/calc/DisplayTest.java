@@ -101,6 +101,11 @@ public class DisplayTest {
     }
 
     @Test
+    public void updateDecimalTwiceTest2() {
+        assertEquals("1.0+",display.updateDisplay("1.0+", "."));
+    }
+
+    @Test
     public void updateDecimalInOperationTest() {
         assertEquals("1.0+0.3",display.updateDisplay("1.0+0.3", "."));
     }
