@@ -15,6 +15,22 @@ public class Display {
         return false;
     }
 
+    public boolean canDecimalBeAdded(String input) {
+        char[] temp = input.toCharArray();
+        int counter = 0;
+        for (int i = 0; i < temp.length; i++) {
+            if (temp[i] == '.' || temp[i] == ',')
+                counter++;
+        }
+        if (counter >= 2)
+            return false;
+        else if (counter == 1 && Character.isDigit(input.charAt(input.length() - 1)))
+            return false;
+        else if (input.charAt(input.length() - 1) == '.' || input.charAt(input.length() - 1) == ',')
+            return false;
+        else return true;
+    }
+
     public boolean isProperInput(String input) {
         char[] inputArr = input.toCharArray();
         int counter = 0;
@@ -33,13 +49,20 @@ public class Display {
 
     public String updateDisplay(String onScreen, String value) {
         if (isProperInput(value)) {
-            if (isZero(onScreen)&& !value.equals(".")) {
+            if (isZero(onScreen) && !value.equals(".")) {
                 onScreen = onScreen.replace("0", value);
             } else if (isLastCharAnOperator(onScreen) && isLastCharAnOperator(value)) {
                 onScreen = onScreen.replace(String.valueOf(onScreen.charAt(onScreen.length() - 1)), value);
+            } else if (value.equals(".") || value.equals(",")) {
+                if (canDecimalBeAdded(onScreen)) {
+                    onScreen += value;
+                } else
+                    return onScreen;
+
             } else {
                 onScreen += value;
             }
+
         }
         return onScreen;
     }
