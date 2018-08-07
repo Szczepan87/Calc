@@ -66,6 +66,8 @@ public class Operation {
         if (!display.isProperInput(value))
             return "ERR!";
         setOperator(value);
+        if (this.operator == null)
+            return value;
         String[] split = value.split(getOperator());
         BigDecimal firstVal;
         if (split[0].equals("")) {
@@ -73,6 +75,9 @@ public class Operation {
             firstVal = BigDecimal.valueOf(Double.parseDouble(split[0])).negate();
         } else
             firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
+
+        if (!display.isProperDecimal(split[0]) || !display.isProperDecimal(split[1]))
+            return "ERR!";
 
         switch (getOperator()) {
             case "\\+":
