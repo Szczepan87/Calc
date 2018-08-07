@@ -33,6 +33,8 @@ public class Display {
     }
 
     public boolean isProperDecimal(String value){
+        if (value == null)
+            return false;
         char[] chars = value.toCharArray();
         int counter = 0;
         for (char aChar : chars) {

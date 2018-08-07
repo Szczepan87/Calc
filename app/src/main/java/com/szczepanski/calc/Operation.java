@@ -69,6 +69,8 @@ public class Operation {
         if (this.operator == null)
             return value;
         String[] split = value.split(getOperator());
+        if (split.length<2)
+            return "ERR!";
         BigDecimal firstVal;
         if (split[0].equals("")) {
             split = value.substring(1).split(getOperator());

@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             resultTextView.setText(R.string.ERROR);
         else {
             String onScreen = resultTextView.getText().toString();
-            String result = operation.makeCalculation(onScreen+"/100");
+            String result = operation.makeCalculation(onScreen + "/100");
             resultTextView.setText(String.valueOf(result));
         }
     }
@@ -151,9 +151,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void equalsButton(View view) {
-        operatorClicked = true;
-        String onScreen = String.valueOf(resultTextView.getText());
-        resultTextView.setText(operation.makeCalculation(onScreen));
+        if (operatorClicked) {
+            String onScreen = String.valueOf(resultTextView.getText());
+            resultTextView.setText(operation.makeCalculation(onScreen));
+        }
     }
 
     public void negateButton(View view) {
