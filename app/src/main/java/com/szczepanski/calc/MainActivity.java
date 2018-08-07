@@ -70,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
         if (operation.isNumerical(String.valueOf(resultTextView.getText())))
             resultTextView.setText(R.string.ERROR);
         else {
-            BigDecimal result = BigDecimal.valueOf(Double.parseDouble(String.valueOf
-                    (resultTextView.getText()))).divide(BigDecimal.valueOf(100), 10, RoundingMode.HALF_UP);
+            String onScreen = resultTextView.getText().toString();
+            String result = operation.makeCalculation(onScreen+"/100");
             resultTextView.setText(String.valueOf(result));
         }
     }
