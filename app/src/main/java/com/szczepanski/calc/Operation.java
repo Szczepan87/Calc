@@ -46,8 +46,8 @@ public class Operation {
     }
 
     public boolean isNumerical(String value) {
-        return !value.contains("+") && !value.contains("*") && !value.contains("/")
-                && value.charAt(value.length() - 1) != '-';
+        return value.contains("+") || value.contains("*") || value.contains("/")
+                || value.charAt(value.length() - 1) == '-';
     }
 
     public boolean isNotDecimal(String value) {

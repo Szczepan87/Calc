@@ -21,11 +21,8 @@ public class Display {
         for (int i = 0; i < temp.length; i++) {
             if (temp[i] == '.' || temp[i] == ',')
                 counter++;
-            for (int j = 0; j < operators.length; j++) {
-                if (counter == 1 && input.charAt(i) == operators[j] && isLastCharAnOperator(input))
-                    return false;
-            }
         }
+
         if (counter >= 2)
             return false;
         else if (counter == 1 && isLastCharAnOperator(input))
