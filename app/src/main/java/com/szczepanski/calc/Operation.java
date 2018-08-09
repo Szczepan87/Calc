@@ -78,7 +78,7 @@ public class Operation {
         } else
             firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
 
-        if (!display.isProperDecimal(split[0]) || !display.isProperDecimal(split[1]))
+        if (display.isNotProperDecimal(split[0]) || display.isNotProperDecimal(split[1]))
             return "ERR!";
 
         switch (getOperator()) {
@@ -89,7 +89,8 @@ public class Operation {
                 result = firstVal.multiply(BigDecimal.valueOf(Double.parseDouble(split[1])));
                 break;
             case "\\/":
-                if (split[1].equals("0") || split[1].equals("") || split[1] == null)
+                if (split[1].equals("0") || split[1].equals("") || split[1] == null
+                        || split[1].equals("ERR!"))
                     return "ERR!";
                 else
                     result = firstVal.divide(BigDecimal.valueOf(Double.parseDouble(split[1])), 10, RoundingMode.HALF_UP);

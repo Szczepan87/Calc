@@ -32,16 +32,16 @@ public class Display {
         else return true;
     }
 
-    public boolean isProperDecimal(String value){
+    public boolean isNotProperDecimal(String value){
         if (value == null)
-            return false;
+            return true;
         char[] chars = value.toCharArray();
         int counter = 0;
         for (char aChar : chars) {
             if (aChar == '.' || aChar == ',')
                 counter++;
         }
-        return counter <= 1;
+        return counter > 1;
     }
 
     public boolean isProperInput(String input) {
