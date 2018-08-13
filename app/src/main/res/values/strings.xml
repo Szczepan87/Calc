@@ -4,4 +4,9 @@
     <string name="currency_converter">Przelicznik walut</string>
     <string name="unit_converter">Przelicznik jednostek</string>
     <string name="calculator">Kalkulator</string>
+    <string name="select_unit">Wybierz typ jednostki</string>
+    <string name="base_unit">Przelicz z:</string>
+    <string name="result_unit">Przelicz na:</string>
+    <string name="value">Wartość</string>
+    <string name="result">Rezultat</string>
 </resources>
