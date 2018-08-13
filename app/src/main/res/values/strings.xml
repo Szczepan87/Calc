@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Calc</string>
     <string name="ERROR">ERR!</string>
+    <string name="currency_converter">Przelicznik walut</string>
+    <string name="unit_converter">Przelicznik jednostek</string>
+    <string name="calculator">Kalkulator</string>
 </resources>
