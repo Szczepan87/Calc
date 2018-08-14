@@ -90,10 +90,10 @@ public class DisplayTest {
         assertFalse(display.isProperInput("ERR!"));
     }
 
-    @Test
-    public void updateDecimalTest() {
-        assertEquals("1.0",display.updateDisplay("1.0", "."));
-    }
+//    @Test
+//    public void updateDecimalTest() {
+//        assertEquals("1.0",display.updateDisplay("1.0", "."));
+//    }
 
     @Test
     public void updateDecimalTwiceTest() {
