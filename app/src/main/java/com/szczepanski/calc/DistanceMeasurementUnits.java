@@ -3,11 +3,14 @@ package com.szczepanski.calc;
 import java.math.BigDecimal;
 
 public class DistanceMeasurementUnits extends UnitDatabaseTemplate{
-    
+
+    public DistanceMeasurementUnits() {
+        fillListOfMeasurementUnits();
+    }
+
     private final UnitOfMeasurement meter = new UnitOfMeasurement(BigDecimal.valueOf(1),"Meter", "m");
-    
-    @Override
-    public void fillListOfMeasurementUnits() {
+
+    private void fillListOfMeasurementUnits() {
         getListOfMeasurementUnits().add(meter);
         getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(0.001)),"Millimeter", "mm"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(0.01)),"Centimeter", "cm"));

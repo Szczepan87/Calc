@@ -8,9 +8,7 @@ public abstract class UnitDatabaseTemplate {
 
     private List<UnitOfMeasurement> listOfMeasurementUnits = new ArrayList<>();
 
-    public abstract void fillListOfMeasurementUnits();
-
-    public List<UnitOfMeasurement> getListOfMeasurementUnits() {
+    List<UnitOfMeasurement> getListOfMeasurementUnits() {
         return listOfMeasurementUnits;
     }
 
