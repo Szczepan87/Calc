@@ -13,6 +13,6 @@ public class WeightMeasurementUnits extends UnitDatabaseTemplate {
         getListOfMeasurementUnits().add(new UnitOfMeasurement(gram.getUnitValue().multiply(BigDecimal.valueOf(31.103477)),"Ounce(precious metals)","ozt"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(gram.getUnitValue().multiply(BigDecimal.valueOf(453.59237)),"Pounds","lbs"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(gram.getUnitValue().multiply(BigDecimal.valueOf(1000)),"Kilogram","kg"));
-
+        getListOfMeasurementUnits().add(new UnitOfMeasurement(gram.getUnitValue().multiply(BigDecimal.valueOf(1000000)),"Tonne (metric)","t"));
     }
 }
