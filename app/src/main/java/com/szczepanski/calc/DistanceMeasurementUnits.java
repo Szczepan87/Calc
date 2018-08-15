@@ -17,8 +17,7 @@ public class DistanceMeasurementUnits extends UnitDatabaseTemplate{
         getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(0.1)),"Decimeter", "dm"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(0.0254)),"Inch", "in"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(0.3048)),"Foot", "ft"));
-        getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(0.9144)),"Yard", "yrd"));
-        getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(0.9144)),"Yard", "yrd"));
+        getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(0.9144)),"Yard", "yd"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(1000)),"Kilometer", "km"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(1609.4)),"Mile", "mi"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(1852)),"Nautical mile", "Nmi"));

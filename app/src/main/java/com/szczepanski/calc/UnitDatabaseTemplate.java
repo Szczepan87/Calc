@@ -21,4 +21,13 @@ public abstract class UnitDatabaseTemplate {
         }
         return null;
     }
+
+    public List<String> getAvailableUnitNames(){
+        List<String> list = new ArrayList<>();
+
+        for (int i = 0; i < listOfMeasurementUnits.size(); i++) {
+            list.add(listOfMeasurementUnits.get(i).getFullName());
+        }
+        return list;
+    }
 }

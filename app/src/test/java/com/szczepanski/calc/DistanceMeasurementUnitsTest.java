@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 
 import static junit.framework.Assert.assertEquals;
 
-public class WeightMeasurementUnitsTest {
+public class DistanceMeasurementUnitsTest {
 
     UnitDatabaseTemplate unit = new DistanceMeasurementUnits();
 
