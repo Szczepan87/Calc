@@ -15,7 +15,7 @@ public class DistanceMeasurementUnits extends UnitDatabaseTemplate{
         getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(0.001)),"Millimeter", "mm"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(0.01)),"Centimeter", "cm"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(0.1)),"Decimeter", "dm"));
-        getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(39.37)),"Inch", "in"));
+        getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(0.0254)),"Inch", "in"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(0.3048)),"Foot", "ft"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(0.9144)),"Yard", "yrd"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(0.9144)),"Yard", "yrd"));
