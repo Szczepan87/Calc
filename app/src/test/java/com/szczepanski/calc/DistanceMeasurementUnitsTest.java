@@ -12,25 +12,25 @@ public class DistanceMeasurementUnitsTest {
 
     @Test
     public void compareMetricToMetricUnitTest() {
-        assertEquals(BigDecimal.valueOf(0.001),unit.getDistanceUnit("m")
-                .getUnitValue().divide(unit.getDistanceUnit("km").getUnitValue()));
+        assertEquals(BigDecimal.valueOf(0.001),unit.getUnit("m")
+                .getUnitValue().divide(unit.getUnit("km").getUnitValue()));
     }
 
     @Test
     public void compareMetricToImperialUnitTest() {
-        assertEquals(BigDecimal.valueOf(0.0000254),unit.getDistanceUnit("inch")
-                .getUnitValue().divide(unit.getDistanceUnit("km").getUnitValue()));
+        assertEquals(BigDecimal.valueOf(0.0000254),unit.getUnit("inch")
+                .getUnitValue().divide(unit.getUnit("km").getUnitValue()));
     }
 
     @Test
     public void compareImperialToImperialUnitTest() {
-        assertEquals(BigDecimal.valueOf(3),unit.getDistanceUnit("yard")
-                .getUnitValue().divide(unit.getDistanceUnit("ft").getUnitValue()));
+        assertEquals(BigDecimal.valueOf(3),unit.getUnit("yard")
+                .getUnitValue().divide(unit.getUnit("ft").getUnitValue()));
     }
 
     @Test
     public void compareImperialToMetricUnitTest() {
-        assertEquals(BigDecimal.valueOf(91.44),unit.getDistanceUnit("yard")
-                .getUnitValue().divide(unit.getDistanceUnit("cm").getUnitValue()));
+        assertEquals(BigDecimal.valueOf(91.44),unit.getUnit("yard")
+                .getUnitValue().divide(unit.getUnit("cm").getUnitValue()));
     }
 }

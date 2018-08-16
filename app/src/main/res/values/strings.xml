@@ -10,6 +10,7 @@
     <string name="value">Wartość</string>
     <string name="result">Rezultat</string>
     <string name="base_currency">0,00 PLN</string>
+    <string name="please_select_value">Wybierz wartość z listy!</string>
     <string-array name="units_for_measurements">
         <item>Długość</item>
         <item>Waga</item>

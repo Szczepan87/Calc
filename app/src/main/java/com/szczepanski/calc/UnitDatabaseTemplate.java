@@ -11,7 +11,7 @@ public abstract class UnitDatabaseTemplate {
         return listOfMeasurementUnits;
     }
 
-    public UnitOfMeasurement getDistanceUnit(String fullNameOrShortName) {
+    public UnitOfMeasurement getUnit(String fullNameOrShortName) {
         for (int i = 0; i < listOfMeasurementUnits.size(); i++) {
             if (listOfMeasurementUnits.get(i).getFullName().toLowerCase().equals(fullNameOrShortName))
                 return listOfMeasurementUnits.get(i);
