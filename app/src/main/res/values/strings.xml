@@ -11,8 +11,13 @@
     <string name="result">Rezultat</string>
     <string name="base_currency">0,00 PLN</string>
     <string name="please_select_value">Wybierz wartość z listy!</string>
+    <string name="acre">Akr</string>
+    <string name="are">Ar</string>
     <string-array name="units_for_measurements">
         <item>Długość</item>
         <item>Waga</item>
+        <item>Objętość</item>
+        <item>Powierzchnia</item>
+        <item>Pamięć</item>
     </string-array>
 </resources>

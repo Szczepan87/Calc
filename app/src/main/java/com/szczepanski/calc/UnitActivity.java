@@ -39,7 +39,6 @@ public class UnitActivity extends AppCompatActivity {
     private UnitDatabaseTemplate unit;
     private UnitOfMeasurement firstUnit;
     private UnitOfMeasurement resultUnit;
-    private BigDecimal result = new BigDecimal(0);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,17 +81,31 @@ public class UnitActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (adapterView.getSelectedItem().toString()) {
                     case "Długość":
-                        unit = new DistanceMeasurementUnits();
-                        Toast.makeText(UnitActivity.this, adapterView.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        unit = new DistanceMeasurementUnit();
                         initFirstUnitSpinner();
                         initSecondUnitSpinner();
                         break;
                     case "Waga":
-                        unit = new WeightMeasurementUnits();
-                        Toast.makeText(UnitActivity.this, adapterView.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        unit = new WeightMeasurementUnit();
                         initFirstUnitSpinner();
                         initSecondUnitSpinner();
                         break;
+                    case "Objętość":
+                        unit = new VolumeMeasurementUnit();
+                        initFirstUnitSpinner();
+                        initSecondUnitSpinner();
+                        break;
+                    case "Powierzchnia":
+                        unit = new AreaMeasurementUnit();
+                        initFirstUnitSpinner();
+                        initSecondUnitSpinner();
+                        break;
+                    case "Pamięć":
+                        unit = new MemoryMeasurementUnit();
+                        initFirstUnitSpinner();
+                        initSecondUnitSpinner();
+                        break;
+
                 }
             }
 
@@ -144,12 +157,12 @@ public class UnitActivity extends AppCompatActivity {
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-            result = BigDecimal.valueOf(Double.parseDouble(String.valueOf(valueEditText.getText())));
+            BigDecimal result = BigDecimal.valueOf(Double.parseDouble(String.valueOf(valueEditText.getText())));
             result = firstUnit.getUnitValue().multiply(result);
             if (result.equals(BigDecimal.valueOf(0))) {
                 result = BigDecimal.valueOf(0);
             }
-            result = result.divide(resultUnit.getUnitValue().setScale(10, RoundingMode.HALF_UP));
+            result = result.divide(resultUnit.getUnitValue(),RoundingMode.HALF_UP);
             resultTextView.setText(String.valueOf(result));
             return true;
         } else return false;

@@ -8,7 +8,7 @@ import static junit.framework.Assert.assertEquals;
 
 public class DistanceMeasurementUnitsTest {
 
-    UnitDatabaseTemplate unit = new DistanceMeasurementUnits();
+    private UnitDatabaseTemplate unit = new DistanceMeasurementUnit();
 
     @Test
     public void compareMetricToMetricUnitTest() {

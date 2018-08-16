@@ -2,9 +2,9 @@ package com.szczepanski.calc;
 
 import java.math.BigDecimal;
 
-public class WeightMeasurementUnits extends UnitDatabaseTemplate {
+public class WeightMeasurementUnit extends UnitDatabaseTemplate {
 
-    public WeightMeasurementUnits() {
+    WeightMeasurementUnit() {
         fillUnitDatabase();
     }
 

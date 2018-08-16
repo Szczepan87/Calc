@@ -2,9 +2,9 @@ package com.szczepanski.calc;
 
 import java.math.BigDecimal;
 
-public class DistanceMeasurementUnits extends UnitDatabaseTemplate{
+public class DistanceMeasurementUnit extends UnitDatabaseTemplate{
 
-    public DistanceMeasurementUnits() {
+    DistanceMeasurementUnit() {
         fillUnitDatabase();
     }
 

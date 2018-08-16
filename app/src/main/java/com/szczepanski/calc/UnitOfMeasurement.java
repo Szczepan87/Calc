@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 public class UnitOfMeasurement {
 
+    private int resId;
     private BigDecimal value;
     private String fullName;
     private String shortName;
@@ -14,6 +15,16 @@ public class UnitOfMeasurement {
         this.shortName = shortName;
     }
 
+    public UnitOfMeasurement(BigDecimal value, int resourceId, String shortName) {
+        this.value = value;
+        this.resId = resourceId;
+        this.shortName = shortName;
+    }
+
+
+    public int getResId() {
+        return resId;
+    }
 
     public BigDecimal getUnitValue() {
         return this.value;
