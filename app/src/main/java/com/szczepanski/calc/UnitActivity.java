@@ -71,10 +71,15 @@ public class UnitActivity extends AppCompatActivity {
                     case "Długość":
                         unit = new DistanceMeasurementUnits();
                         Toast.makeText(UnitActivity.this, adapterView.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        initFirstUnitSpinner();
+                        initSecondUnitSpinner();
                         break;
                     case "Waga":
                         unit = new WeightMeasurementUnits();
                         Toast.makeText(UnitActivity.this, adapterView.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+                        initFirstUnitSpinner();
+                        initSecondUnitSpinner();
+                        break;
                 }
             }
 
@@ -85,12 +90,30 @@ public class UnitActivity extends AppCompatActivity {
         });
     }
 
-    private void initfirstUnitSpinner(){
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource
-                (this,unit.getListOfMeasurementUnits(),android.R.layout.simple_spinner_dropdown_item);
-        measurementClassSpinner.setAdapter(adapter);
+    private void initFirstUnitSpinner(){
+        ArrayAdapter<String> adapter = new ArrayAdapter<>
+                (this, android.R.layout.simple_spinner_dropdown_item,unit.getAvailableUnitNames());
+        firstUnitSpinner.setAdapter(adapter);
 
-        measurementClassSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        firstUnitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private void initSecondUnitSpinner(){
+        ArrayAdapter<String> adapter = new ArrayAdapter<>
+                (this, android.R.layout.simple_spinner_dropdown_item,unit.getAvailableUnitNames());
+        secondUnitSpinner.setAdapter(adapter);
+
+        secondUnitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 

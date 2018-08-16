@@ -5,7 +5,6 @@ import java.util.List;
 
 public abstract class UnitDatabaseTemplate {
 
-
     private List<UnitOfMeasurement> listOfMeasurementUnits = new ArrayList<>();
 
     List<UnitOfMeasurement> getListOfMeasurementUnits() {
@@ -30,4 +29,6 @@ public abstract class UnitDatabaseTemplate {
         }
         return list;
     }
+
+    public abstract void fillUnitDatabase();
 }

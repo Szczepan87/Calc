@@ -5,12 +5,13 @@ import java.math.BigDecimal;
 public class DistanceMeasurementUnits extends UnitDatabaseTemplate{
 
     public DistanceMeasurementUnits() {
-        fillListOfMeasurementUnits();
+        fillUnitDatabase();
     }
 
     private final UnitOfMeasurement meter = new UnitOfMeasurement(BigDecimal.valueOf(1),"Meter", "m");
 
-    private void fillListOfMeasurementUnits() {
+    @Override
+    public void fillUnitDatabase() {
         getListOfMeasurementUnits().add(meter);
         getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(0.001)),"Millimeter", "mm"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(meter.getUnitValue().multiply(BigDecimal.valueOf(0.01)),"Centimeter", "cm"));
