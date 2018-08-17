@@ -162,7 +162,7 @@ public class UnitActivity extends AppCompatActivity {
             if (result.equals(BigDecimal.valueOf(0))) {
                 result = BigDecimal.valueOf(0);
             }
-            result = result.divide(resultUnit.getUnitValue(),RoundingMode.HALF_UP);
+            result = result.divide(resultUnit.getUnitValue(),10,RoundingMode.HALF_UP);
             resultTextView.setText(String.valueOf(result));
             return true;
         } else return false;

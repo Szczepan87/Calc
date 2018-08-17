@@ -13,7 +13,7 @@ public class MemoryMeasurementUnit extends UnitDatabaseTemplate {
     @Override
     public void fillUnitDatabase() {
         getListOfMeasurementUnits().add(bit);
-        getListOfMeasurementUnits().add(new UnitOfMeasurement(bit.getUnitValue().multiply(BigDecimal.valueOf(36.36872)),"Byte", "B"));
+        getListOfMeasurementUnits().add(new UnitOfMeasurement(bit.getUnitValue().multiply(BigDecimal.valueOf(8)),"Byte", "B"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(bit.getUnitValue().multiply(BigDecimal.valueOf(1024)),"Kilobits", "Kb"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(bit.getUnitValue().multiply(BigDecimal.valueOf(8192)),"Kilobyte", "KB"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(bit.getUnitValue().multiply(BigDecimal.valueOf(1048576)),"Megabits", "Mb"));

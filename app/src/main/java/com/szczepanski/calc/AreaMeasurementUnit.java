@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class AreaMeasurementUnit extends UnitDatabaseTemplate{
 
-    public AreaMeasurementUnit() {
+    AreaMeasurementUnit() {
         fillUnitDatabase();
     }
 
@@ -22,6 +22,6 @@ public class AreaMeasurementUnit extends UnitDatabaseTemplate{
         getListOfMeasurementUnits().add(new UnitOfMeasurement(squareMeter.getUnitValue().multiply(BigDecimal.valueOf(1000000)), "Square kilometer","km2"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(squareMeter.getUnitValue().multiply(BigDecimal.valueOf(2589988.110336)), "Square mile","mi2"));
         getListOfMeasurementUnits().add(new UnitOfMeasurement(squareMeter.getUnitValue().multiply(BigDecimal.valueOf(0.000001)), "Square millimeter","mm2"));
-        getListOfMeasurementUnits().add(new UnitOfMeasurement(squareMeter.getUnitValue().multiply(BigDecimal.valueOf(0.836127)), "Square yard","yd2"));
+        getListOfMeasurementUnits().add(new UnitOfMeasurement(squareMeter.getUnitValue().multiply(BigDecimal.valueOf(0.83612736)), "Square yard","yd2"));
     }
 }
