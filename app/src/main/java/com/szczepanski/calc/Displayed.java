@@ -43,7 +43,7 @@ public class Displayed {
         return operators.contains(input);
     }
 
-    private boolean isProperDecimal(String input) {
+    public boolean isProperInput(String input) {
 
         int counter = 0;
 
@@ -64,7 +64,6 @@ public class Displayed {
             if (i > 0 && (inputCharArr[i - 1] == '.' || inputCharArr[i - 1] == ',') && isOperator(inputCharArr[i])) {
                 return false;
             }
-
             if (i > 0 && isOperator(inputCharArr[i - 1]) && isOperator(inputCharArr[i])) {
                 if (i + 1 < inputCharArr.length && inputCharArr[i - 1] != '-' && inputCharArr[i] == '-' && Character.isDigit(inputCharArr[i + 1])) {
                     return true;
@@ -92,8 +91,21 @@ public class Displayed {
         return true;
     }
 
-    public boolean isProperInput(String input) {
-        return isProperDecimal(input);
+    public String updateDisplay(String onScreen, char value) {
+        String s = onScreen + value;
+        if (isOperator(onScreen.charAt(onScreen.length()-1))){
+            if (value=='-'&&(onScreen.charAt(onScreen.length()-1)=='-'||onScreen.charAt(onScreen.length()-1)=='+')){
+                onScreen = onScreen.replace(onScreen.charAt(onScreen.length()-1),value);
+                return onScreen;
+            }
+            else if (value=='-'&&(onScreen.charAt(onScreen.length()-1)=='*'||onScreen.charAt(onScreen.length()-1)=='/'))
+                return s;
+        }
+        if (isProperInput(s) && isProperInput(String.valueOf(value))) {
+            if (onScreen.length() == 1 && onScreen.charAt(0) == '0') {
+                return String.valueOf(value);
+            }
+            return s;
+        } else return onScreen;
     }
-
 }

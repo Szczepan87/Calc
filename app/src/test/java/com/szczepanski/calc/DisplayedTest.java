@@ -2,6 +2,7 @@ package com.szczepanski.calc;
 
 import org.junit.Test;
 
+import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -78,6 +79,37 @@ public class DisplayedTest {
     public void properInputTest14() {
         assertTrue(displayed.isProperInput("-"));
     }
+
+    @Test
+    public void properInputTest15() {
+        assertEquals("0.1-", displayed.updateDisplay("0.1+", '-'));
+    }
+
+    @Test
+    public void properInputTest16() {
+        assertEquals("0.1*-", displayed.updateDisplay("0.1*", '-'));
+    }
+
+    @Test
+    public void properInputTest17() {
+        assertEquals("10", displayed.updateDisplay("1", '0'));
+    }
+
+    @Test
+    public void properInputTest18() {
+        assertEquals("-", displayed.updateDisplay("0", '-'));
+    }
+
+    @Test
+    public void properInputTest19() {
+        assertEquals("1", displayed.updateDisplay("0", '1'));
+    }
+
+    @Test
+    public void properInputTest20() {
+        assertEquals("0", displayed.updateDisplay("0", '+'));
+    }
+
 
     //wrong input types below
 
@@ -179,6 +211,36 @@ public class DisplayedTest {
     @Test
     public void wrongInputTest20() {
         assertFalse(displayed.isProperInput("*"));
+    }
+
+    @Test
+    public void wrongInputTest21() {
+        assertEquals("0", displayed.updateDisplay("0", '0'));
+    }
+
+    @Test
+    public void wrongInputTest22() {
+        assertEquals("0.", displayed.updateDisplay("0.", '.'));
+    }
+
+    @Test
+    public void wrongInputTest23() {
+        assertEquals("0.", displayed.updateDisplay("0.", '+'));
+    }
+
+    @Test
+    public void wrongInputTest24() {
+        assertEquals("0.", displayed.updateDisplay("0.", '+'));
+    }
+
+    @Test
+    public void wrongInputTest25() {
+        assertEquals("0.1+", displayed.updateDisplay("0.1+", '+'));
+    }
+
+    @Test
+    public void wrongInputTest26() {
+        assertEquals("0.1-", displayed.updateDisplay("0.1-", '-'));
     }
 
 }
