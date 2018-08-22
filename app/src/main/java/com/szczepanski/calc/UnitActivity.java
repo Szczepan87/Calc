@@ -87,34 +87,20 @@ public class UnitActivity extends AppCompatActivity {
         measurementClassSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                switch (adapterView.getSelectedItem().toString()) {
-                    case "Długość":
-                        unit = new DistanceMeasurementUnit();
-                        initFirstUnitSpinner();
-                        initSecondUnitSpinner();
-                        break;
-                    case "Waga":
-                        unit = new WeightMeasurementUnit();
-                        initFirstUnitSpinner();
-                        initSecondUnitSpinner();
-                        break;
-                    case "Objętość":
-                        unit = new VolumeMeasurementUnit();
-                        initFirstUnitSpinner();
-                        initSecondUnitSpinner();
-                        break;
-                    case "Powierzchnia":
-                        unit = new AreaMeasurementUnit();
-                        initFirstUnitSpinner();
-                        initSecondUnitSpinner();
-                        break;
-                    case "Pamięć":
-                        unit = new MemoryMeasurementUnit();
-                        initFirstUnitSpinner();
-                        initSecondUnitSpinner();
-                        break;
+                if (adapterView.getSelectedItem().toString().equals(getString(R.string.Length))){
+                    unit = new DistanceMeasurementUnit();
+                } else if(adapterView.getSelectedItem().toString().equals(getString(R.string.Weight))){
+                    unit = new WeightMeasurementUnit();
+                } else if (adapterView.getSelectedItem().toString().equals(getString(R.string.Volume))){
+                    unit = new VolumeMeasurementUnit();
+                } else if (adapterView.getSelectedItem().toString().equals(getString(R.string.Area))){
+                    unit = new AreaMeasurementUnit();
+                } else if (adapterView.getSelectedItem().toString().equals(getString(R.string.Memory))){
+                    unit = new MemoryMeasurementUnit();
 
                 }
+                initFirstUnitSpinner();
+                initSecondUnitSpinner();
             }
 
             @Override

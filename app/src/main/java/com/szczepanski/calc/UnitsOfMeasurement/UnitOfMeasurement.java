@@ -2,7 +2,7 @@ package com.szczepanski.calc.UnitsOfMeasurement;
 
 import java.math.BigDecimal;
 
-public class UnitOfMeasurement {
+public class UnitOfMeasurement{
 
     private BigDecimal value;
     private String fullName;
