@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 public class DisplayedTest {
 
-    Displayed displayed = new Displayed();
+    private Displayed displayed = new Displayed();
 
     @Test
     public void properInputTest() {
@@ -107,7 +107,27 @@ public class DisplayedTest {
 
     @Test
     public void properInputTest20() {
-        assertEquals("0", displayed.updateDisplay("0", '+'));
+        assertEquals("0+", displayed.updateDisplay("0", '+'));
+    }
+
+    @Test
+    public void properInputTest21() {
+        assertEquals("0.", displayed.updateDisplay("0", '.'));
+    }
+
+    @Test
+    public void properInputTest22() {
+        assertEquals("2+", displayed.updateDisplay("2", '+'));
+    }
+
+    @Test
+    public void properInputTest23() {
+        assertEquals("2+3", displayed.updateDisplay("2+", '3'));
+    }
+
+    @Test
+    public void properInputTest24() {
+        assertEquals("2/", displayed.updateDisplay("2", '/'));
     }
 
 

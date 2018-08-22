@@ -1,5 +1,7 @@
-package com.szczepanski.calc;
+package com.szczepanski.calc.UnitOfMeasurementTests;
 
+
+import com.szczepanski.calc.UnitsOfMeasurement.UnitOfMeasurement;
 
 import org.junit.Test;
 

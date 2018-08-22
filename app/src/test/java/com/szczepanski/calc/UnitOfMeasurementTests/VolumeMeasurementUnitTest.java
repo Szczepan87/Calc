@@ -1,4 +1,7 @@
-package com.szczepanski.calc;
+package com.szczepanski.calc.UnitOfMeasurementTests;
+
+import com.szczepanski.calc.UnitsOfMeasurement.UnitDatabaseTemplate;
+import com.szczepanski.calc.UnitsOfMeasurement.VolumeMeasurementUnit;
 
 import org.junit.Test;
 

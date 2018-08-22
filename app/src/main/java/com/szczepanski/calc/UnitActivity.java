@@ -15,6 +15,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.szczepanski.calc.UnitsOfMeasurement.AreaMeasurementUnit;
+import com.szczepanski.calc.UnitsOfMeasurement.DistanceMeasurementUnit;
+import com.szczepanski.calc.UnitsOfMeasurement.MemoryMeasurementUnit;
+import com.szczepanski.calc.UnitsOfMeasurement.UnitDatabaseTemplate;
+import com.szczepanski.calc.UnitsOfMeasurement.UnitOfMeasurement;
+import com.szczepanski.calc.UnitsOfMeasurement.VolumeMeasurementUnit;
+import com.szczepanski.calc.UnitsOfMeasurement.WeightMeasurementUnit;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 

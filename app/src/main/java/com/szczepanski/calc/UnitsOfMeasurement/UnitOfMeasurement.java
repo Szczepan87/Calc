@@ -1,4 +1,4 @@
-package com.szczepanski.calc;
+package com.szczepanski.calc.UnitsOfMeasurement;
 
 import java.math.BigDecimal;
 
@@ -8,7 +8,7 @@ public class UnitOfMeasurement {
     private String fullName;
     private String shortName;
 
-    UnitOfMeasurement(final BigDecimal value, final String fullName, final String shortName) {
+    public UnitOfMeasurement(final BigDecimal value, final String fullName, final String shortName) {
         this.value = value;
         this.fullName = fullName;
         this.shortName = shortName;

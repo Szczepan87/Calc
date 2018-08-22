@@ -1,10 +1,10 @@
-package com.szczepanski.calc;
+package com.szczepanski.calc.UnitsOfMeasurement;
 
 import java.math.BigDecimal;
 
 public class MemoryMeasurementUnit extends UnitDatabaseTemplate {
 
-    MemoryMeasurementUnit() {
+    public MemoryMeasurementUnit() {
         fillUnitDatabase();
     }
 

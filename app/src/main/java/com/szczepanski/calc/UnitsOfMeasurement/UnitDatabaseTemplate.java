@@ -1,4 +1,4 @@
-package com.szczepanski.calc;
+package com.szczepanski.calc.UnitsOfMeasurement;
 
 import java.util.ArrayList;
 import java.util.List;
