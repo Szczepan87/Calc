@@ -10,4 +10,81 @@
     <string name="value">Wartość</string>
     <string name="result">Rezultat</string>
     <string name="base_currency">0,00 PLN</string>
+    <string name="please_select_value">Wybierz wartość z listy!</string>
+    <string name="acre">Akr</string>
+    <string name="are">Ar</string>
+    <string name="Length">Długość</string>
+    <string name="Weight">Waga</string>
+    <string name="Volume">Objętość</string>
+    <string name="Area">Powierzchnia</string>
+    <string name="Memory">Pamięć</string>
+    <string name="Acre">Akr</string>
+    <string name="Are">Ar</string>
+    <string name="Hectares">Hektar</string>
+    <string name="Square_centimeter">Centymetr kwadratowy</string>
+    <string name="Square_feet">Stopa kwadratowa</string>
+    <string name="Square_inch">Cal kwadratowy</string>
+    <string name="Square_kilometer">Kilometr kwadratowy</string>
+    <string name="Square_mile">Mila kwadratowa</string>
+    <string name="Square_millimeter">Milimetr kwadratowy</string>
+    <string name="Square_yard">Jard kwadratowy</string>
+    <string name="Square_meter">Metr kwadratowy</string>
+    <string name="Meter">Metr</string>
+    <string name="Millimeter">Milimetr</string>
+    <string name="Centimeter">Centymetr</string>
+    <string name="Decimeter">Decymetr</string>
+    <string name="Inch">Cal</string>
+    <string name="Foot">Stopa</string>
+    <string name="Yard">Jard</string>
+    <string name="Kilometer">Kilometr</string>
+    <string name="Mile">Mila</string>
+    <string name="Nautical_mile">Mila morska</string>
+    <string name="Bit">Bit</string>
+    <string name="Byte">Bajt</string>
+    <string name="Kilobits">Kilobity</string>
+    <string name="Kilobyte">Kilobajty</string>
+    <string name="Megabits">Megabity</string>
+    <string name="Megabyte">Megabajty</string>
+    <string name="Gigabits">Gigabity</string>
+    <string name="Gigabytes">Gigabajty</string>
+    <string name="Petabits">Petabity</string>
+    <string name="Petabytes">Petabajty</string>
+    <string name="Exabits">Exabity</string>
+    <string name="Exabytes">Exabajty</string>
+    <string name="Gram">Gram</string>
+    <string name="Carat_metric">Karat (metryczny)</string>
+    <string name="Decagram">Dekagram</string>
+    <string name="Ounce">Uncja</string>
+    <string name="Ounce_precious_metals">Uncja (metale szlachetne)</string>
+    <string name="Pounds">Funty</string>
+    <string name="Kilograms">Kilogramy</string>
+    <string name="Tonne_metric">Tona (metryczna)</string>
+    <string name="Liters">Litry</string>
+    <string name="Bushels_UK">Buszel (UK)</string>
+    <string name="Bushels_US">Buszel (US)</string>
+    <string name="Cubic_centimeters">Centymetry sześcienne</string>
+    <string name="Cubic_decimeters">Decymetry sześcienne</string>
+    <string name="Cubic_feet">Stopy sześcienne</string>
+    <string name="Acre_foot">Akrostopa</string>
+    <string name="Cubic_inch">Cale sześcienne</string>
+    <string name="Cubic_meter">Metry sześcienne</string>
+    <string name="Cubic_millimeter">Milimetery sześcienne</string>
+    <string name="Cubic_yard">Jardy sześcienne</string>
+    <string name="Table_spoon">Łyżki stołowe</string>
+    <string name="Tea_spoon">Małe łyżeszczki</string>
+    <string name="Fluid_ounces_imperial">Uncja płynu (UK)</string>
+    <string name="Fluid_ounces_US">Uncja płynu (US)</string>
+    <string name="Gallons_imperial">Galony (UK)</string>
+    <string name="Gallons_US">Galony (US)</string>
+    <string name="Milliliters">Mililitry</string>
+    <string name="Pint">Pinta</string>
+    <string name="Pint_US">Pinta (US)</string>
+    <string name="Barrel_oil">Baryłka ropy</string>
+    <string-array name="units_for_measurements">
+        <item>Długość</item>
+        <item>Waga</item>
+        <item>Objętość</item>
+        <item>Powierzchnia</item>
+        <item>Pamięć</item>
+    </string-array>
 </resources>

@@ -7,7 +7,7 @@ public class Operation {
 
     private String operator;
     private BigDecimal result;
-    private Display display = new Display();
+    private Displayed display = new Displayed();
 
     private String getOperator() {
         return "\\" + operator;
@@ -46,11 +46,18 @@ public class Operation {
     }
 
     public boolean isNumerical(String value) {
-        return value.contains("+") || value.contains("*") || value.contains("/")
-                || value.charAt(value.length() - 1) == '-';
+        char[] valueArr = value.toCharArray();
+        for (char aValueArr : valueArr) {
+            if (!Character.isDigit(aValueArr)) {
+                if (aValueArr == '-') {
+                    return true;
+                }
+            }
+        }
+        return true;
     }
 
-    public boolean isNotDecimal(String value) {
+    private boolean isNotDecimal(String value) {
         final char[] deci = new char[]{'.', ','};
         final char[] valueArr = value.toCharArray();
         int counter = 0;
@@ -78,8 +85,8 @@ public class Operation {
         } else
             firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
 
-        if (display.isNotProperDecimal(split[0]) || display.isNotProperDecimal(split[1]))
-            return "ERR!";
+//        if (!display.isProperInput(split[0]))
+//            return "ERR!";
 
         switch (getOperator()) {
             case "\\+":
@@ -106,21 +113,21 @@ public class Operation {
     }
 
     public String squareRoot(String value) {
-        if (value.charAt(0) == '-' || !display.isProperInput(value) || display.isLastCharAnOperator(value))
+        if (value.charAt(0) == '-' || !display.isProperInput(value) || !Character.isDigit(value.charAt(value.length()-1)))
             return "ERR!";
         result = BigDecimal.valueOf(Math.sqrt(Double.parseDouble(value)));
         return cutZeroes(String.valueOf(result));
     }
 
     public String square(String value) {
-        if (!display.isProperInput(value) || display.isLastCharAnOperator(value))
+        if (!display.isProperInput(value) || !Character.isDigit(value.charAt(value.length()-1)))
             return "ERR!";
         result = BigDecimal.valueOf(Math.pow(Double.parseDouble(value), 2));
         return cutZeroes(String.valueOf(result));
     }
 
     public String negate(String value) {
-        if (!display.isProperInput(value) || display.isLastCharAnOperator(value))
+        if (!display.isProperInput(value) || !Character.isDigit(value.charAt(value.length()-1)))
             return "ERR!";
         result = BigDecimal.valueOf(Double.parseDouble(value)).negate();
         return cutZeroes(String.valueOf(result));
