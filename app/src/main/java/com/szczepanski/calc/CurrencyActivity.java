@@ -15,6 +15,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.szczepanski.calc.CurrencyConverter.Exchange;
+import com.szczepanski.calc.CurrencyConverter.ExchangeRate;
 import java.math.BigDecimal;
 import java.util.List;
 
