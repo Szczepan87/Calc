@@ -80,11 +80,42 @@
     <string name="Pint">Pinta</string>
     <string name="Pint_US">Pinta (US)</string>
     <string name="Barrel_oil">Baryłka ropy</string>
+    <string name="Celsius">Stopnie celsjusza</string>
+    <string name="Watt">Wat</string>
+    <string name="Horse_power">Koń mechaniczny</string>
+    <string name="Kilowatts">Kilowaty</string>
+    <string name="Megawatts">Megawaty</string>
+    <string name="Gigawatts">Gigawaty</string>
+    <string name="Power">Moc</string>
+    <string name="Meters_per_second">Metry na sekundę</string>
+    <string name="Kilometers_per_second">Kilometry na sekundę</string>
+    <string name="Kilometers_per_hour">Kilometry na godzinę</string>
+    <string name="Miles_per_hour">Mile na godzinę</string>
+    <string name="Mach">Mach</string>
+    <string name="Speed_of_sound">Prędkość dzwięku</string>
+    <string name="Speed_of_light">Prędkość światła</string>
+    <string name="Speed">Prędkość</string>
+    <string name="Pascal">Paskal</string>
+    <string name="Atmospheres">Atmosfery</string>
+    <string name="Bars">Bary</string>
+    <string name="Hectopascals">Hektopaskale</string>
+    <string name="Kilograms_per_sq_centimeter">Kilogramy na centymetr kwadratowy</string>
+    <string name="Kilograms_per_sq_meter">Kilogramów na metr kwadratowy</string>
+    <string name="Kilopascals">Kilopaskale</string>
+    <string name="Millibars">Milibary</string>
+    <string name="Millimeters_of_mercury">Milimetrów słupka rtęci</string>
+    <string name="PSI">Funty na cal kwadratowy (psi)</string>
+    <string name="Tonnes_per_sq_centimeter">Ton na centymetry kwadratowe</string>
+    <string name="Tonnes_per_sq_meter">Ton na metr kwadratowy</string>
+    <string name="Pressure">Ciśnienie</string>
     <string-array name="units_for_measurements">
         <item>Długość</item>
         <item>Waga</item>
         <item>Objętość</item>
         <item>Powierzchnia</item>
         <item>Pamięć</item>
+        <item>Moc</item>
+        <item>Prędkość</item>
+        <item>Ciśnienie</item>
     </string-array>
 </resources>
