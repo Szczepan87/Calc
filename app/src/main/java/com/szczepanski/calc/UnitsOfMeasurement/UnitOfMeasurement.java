@@ -8,7 +8,7 @@ public class UnitOfMeasurement{
     private String fullName;
     private String shortName;
 
-    public UnitOfMeasurement(final BigDecimal value, final String fullName, final String shortName) {
+    public UnitOfMeasurement(BigDecimal value, String fullName, String shortName) {
         this.value = value;
         this.fullName = fullName;
         this.shortName = shortName;

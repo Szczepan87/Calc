@@ -16,6 +16,7 @@ public class AreaMeasurementUnitTest {
 
     @Test
     public void compareMetricToMetricUnitTest() {
+        UnitDatabaseTemplate unit = new AreaMeasurementUnit();
         assertEquals(BigDecimal.valueOf(0.0000010000).setScale(10),unit.getUnit("m2")
                 .getUnitValue().divide(unit.getUnit("km2").getUnitValue(),10, RoundingMode.HALF_UP));
     }

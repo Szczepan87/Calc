@@ -8,12 +8,11 @@ import java.math.BigDecimal;
 
 public class AreaMeasurementUnit extends UnitDatabaseTemplate{
 
-    public AreaMeasurementUnit() {
+    private UnitOfMeasurement squareMeter = new UnitOfMeasurement(BigDecimal.valueOf(1),App.getContext().getString(R.string.Square_meter), "m2");
 
+    public AreaMeasurementUnit() {
         fillUnitDatabase();
     }
-
-    private final UnitOfMeasurement squareMeter = new UnitOfMeasurement(BigDecimal.valueOf(1),App.getContext().getString(R.string.Square_meter), "m2");
 
     @Override
     public void fillUnitDatabase() {

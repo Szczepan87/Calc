@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private Operation operation = new Operation();
     private Displayed display = new Displayed();
 
+    private boolean isOperatorClicked = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
     //ustawia dziesiętną reprezentację procenta(dzieli na 100)
     public void makePercent(View view) {
-        if (operation.isNumerical(String.valueOf(resultTextView.getText())))
+        if (!operation.isNumerical(String.valueOf(resultTextView.getText())))
             resultTextView.setText(R.string.ERROR);
         else {
             String onScreen = resultTextView.getText().toString();
@@ -104,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
     //tworzy pierwiastek kwadratowy z wyniku
     public void makeSQRT(View view) {
-        if (operation.isNumerical(String.valueOf(resultTextView.getText())))
+        if (!operation.isNumerical(String.valueOf(resultTextView.getText())))
             resultTextView.setText(R.string.ERROR);
         else {
             resultTextView.setText(operation.squareRoot(String.valueOf(resultTextView.getText())));
@@ -113,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
     //tworzy kwadrat z wyniku
     public void makeSquare(View view) {
-        if (operation.isNumerical(String.valueOf(resultTextView.getText())))
+        if (!operation.isNumerical(String.valueOf(resultTextView.getText())))
             resultTextView.setText(R.string.ERROR);
         else {
             resultTextView.setText(operation.square(String.valueOf(resultTextView.getText())));
@@ -122,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
     //tworzy ułamek, którego mianownikiem jest wynik
     public void makeFraction(View view) {
-        if (operation.isNumerical(String.valueOf(resultTextView.getText())))
+        if (!operation.isNumerical(String.valueOf(resultTextView.getText())))
             resultTextView.setText(R.string.ERROR);
         else {
             BigDecimal result = BigDecimal.valueOf(1.0).divide(BigDecimal.valueOf(Double.parseDouble
@@ -156,25 +158,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void divideButton(View view) {
-        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), '/'));
+        if (!isOperatorClicked) {
+            isOperatorClicked = true;
+            resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), '/'));
+        }
 
     }
 
     public void multiplyButton(View view) {
-        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), '*'));
-
+        if (!isOperatorClicked) {
+            isOperatorClicked = true;
+            resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), '*'));
+        }
     }
 
     public void minusButton(View view) {
-        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), '-'));
+        if (!isOperatorClicked) {
+            isOperatorClicked = true;
+            resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), '-'));
+        }
     }
 
     public void plusButton(View view) {
-        resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), '+'));
+        if (!isOperatorClicked) {
+            isOperatorClicked = true;
+            resultTextView.setText(display.updateDisplay(resultTextView.getText().toString(), '+'));
+        }
     }
 
     public void equalsButton(View view) {
         String onScreen = String.valueOf(resultTextView.getText());
+        isOperatorClicked = false;
         resultTextView.setText(operation.makeCalculation(onScreen));
 
     }
