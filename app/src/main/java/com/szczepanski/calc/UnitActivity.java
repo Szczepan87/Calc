@@ -18,6 +18,9 @@ import android.widget.Toast;
 import com.szczepanski.calc.UnitsOfMeasurement.AreaMeasurementUnit;
 import com.szczepanski.calc.UnitsOfMeasurement.DistanceMeasurementUnit;
 import com.szczepanski.calc.UnitsOfMeasurement.MemoryMeasurementUnit;
+import com.szczepanski.calc.UnitsOfMeasurement.PowerMeasurementUnit;
+import com.szczepanski.calc.UnitsOfMeasurement.PressureMeasurementUnit;
+import com.szczepanski.calc.UnitsOfMeasurement.SpeedMeasurementUnit;
 import com.szczepanski.calc.UnitsOfMeasurement.UnitDatabaseTemplate;
 import com.szczepanski.calc.UnitsOfMeasurement.UnitOfMeasurement;
 import com.szczepanski.calc.UnitsOfMeasurement.VolumeMeasurementUnit;
@@ -97,7 +100,12 @@ public class UnitActivity extends AppCompatActivity {
                     unit = new AreaMeasurementUnit();
                 } else if (adapterView.getSelectedItem().toString().equals(getString(R.string.Memory))){
                     unit = new MemoryMeasurementUnit();
-
+                }else if (adapterView.getSelectedItem().toString().equals(getString(R.string.Power))){
+                    unit = new PowerMeasurementUnit();
+                }else if (adapterView.getSelectedItem().toString().equals(getString(R.string.Speed))){
+                    unit = new SpeedMeasurementUnit();
+                }else if (adapterView.getSelectedItem().toString().equals(getString(R.string.Pressure))){
+                    unit = new PressureMeasurementUnit();
                 }
                 initFirstUnitSpinner();
                 initSecondUnitSpinner();
