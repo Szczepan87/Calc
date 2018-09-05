@@ -108,6 +108,8 @@
     <string name="Tonnes_per_sq_centimeter">Ton na centymetry kwadratowe</string>
     <string name="Tonnes_per_sq_meter">Ton na metr kwadratowy</string>
     <string name="Pressure">Ciśnienie</string>
+    <string name="currency_convert">Przelicznik walut</string>
+    <string name="unit_convert">Przelicznik jednostek</string>
     <string-array name="units_for_measurements">
         <item>Długość</item>
         <item>Waga</item>

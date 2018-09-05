@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.szczepanski.calc.CurrencyConverter.Exchange;
 import com.szczepanski.calc.CurrencyConverter.ExchangeRate;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class CurrencyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currency);
+        getSupportActionBar().setTitle(R.string.currency_convert);
     }
 
     @Override
@@ -73,6 +75,8 @@ public class CurrencyActivity extends AppCompatActivity {
         currencySpinner.setAdapter(adapter);
 
         currencySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            // porównywanie do listy
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(CurrencyActivity.this, exchange.getListOfExchangeRates().get(i).getFullName(), Toast.LENGTH_LONG).show();
@@ -131,6 +135,9 @@ public class CurrencyActivity extends AppCompatActivity {
                     symbolSet = "TRY";
                 }
                 else if (adapterView.getSelectedItem().equals("CHF")){
+                    symbolSet = "CHF";
+                }
+                else if (adapterView.getSelectedItem().equals("GBP")){
                     symbolSet = "GBP";
                 }
             }
@@ -161,6 +168,6 @@ public class CurrencyActivity extends AppCompatActivity {
             currencyResultTextView.setText(String.format("%s PLN", String.valueOf(result)));
             return true;
         }
-        else return false;
+        else return super.onKeyUp(keyCode,event);
     }
 }

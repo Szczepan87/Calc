@@ -57,6 +57,7 @@ public class UnitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_unit);
         ButterKnife.bind(this);
         initMeasurementClassSpinner();
+        getSupportActionBar().setTitle(R.string.unit_convert);
     }
 
     @Override
@@ -167,6 +168,6 @@ public class UnitActivity extends AppCompatActivity {
             result = result.divide(resultUnit.getUnitValue(),10,RoundingMode.HALF_UP);
             resultTextView.setText(String.valueOf(result));
             return true;
-        } else return false;
+        } else return super.onKeyUp(keyCode,event);
     }
 }

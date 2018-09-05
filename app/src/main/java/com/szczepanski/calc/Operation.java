@@ -1,13 +1,16 @@
 package com.szczepanski.calc;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 public class Operation {
 
     private String operator;
     private BigDecimal result;
     private Displayed display = new Displayed();
+    private DecimalFormat decimalFormat = new DecimalFormat("0.0000000000000000");
 
     private String getOperator() {
         return "\\" + operator;
@@ -85,15 +88,13 @@ public class Operation {
         } else
             firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
 
-//        if (!display.isProperInput(split[0]))
-//            return "ERR!";
 
         switch (getOperator()) {
             case "\\+":
                 result = firstVal.add(BigDecimal.valueOf(Double.parseDouble(split[1])));
                 break;
             case "\\*":
-                result = firstVal.multiply(BigDecimal.valueOf(Double.parseDouble(split[1])));
+                result = firstVal.multiply(BigDecimal.valueOf(Double.parseDouble(split[1])), MathContext.DECIMAL64);
                 break;
             case "\\/":
                 if (split[1].equals("0") || split[1].equals("") || split[1] == null
@@ -109,7 +110,7 @@ public class Operation {
         if (result == null)
             return value;
         this.operator = null;
-        return cutZeroes(String.valueOf(result));
+        return cutZeroes(decimalFormat.format(result));
     }
 
     public String squareRoot(String value) {
@@ -123,7 +124,7 @@ public class Operation {
         if (!display.isProperInput(value) || !Character.isDigit(value.charAt(value.length()-1)))
             return "ERR!";
         result = BigDecimal.valueOf(Math.pow(Double.parseDouble(value), 2));
-        return cutZeroes(String.valueOf(result));
+        return cutZeroes(decimalFormat.format(result));
     }
 
     public String negate(String value) {

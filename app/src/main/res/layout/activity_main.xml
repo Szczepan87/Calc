@@ -17,13 +17,14 @@
             android:id="@+id/resultTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_weight="2"
             android:text="0"
             android:textAlignment="textEnd"
             android:textColor="@android:color/black"
-            android:textSize="56dp"
-            android:textStyle="bold" />
+            android:textSize="56sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
         <LinearLayout
             android:layout_marginBottom="16dp"
@@ -39,33 +40,40 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <Button
+                <ImageButton
                     android:id="@+id/PercentButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:onClick="makePercent"
-                    android:text="%" />
+                    android:src="@mipmap/icons_percentage_48" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/SquareRootButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="makeSQRT"
-                    android:text="SCR" />
+                    android:src="@mipmap/icons_square_root48" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/SquareButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="makeSquare"
-                    android:text="x2" />
+                    android:src="@mipmap/x_square"
+                    android:textAlignment="center" />
 
                 <Button
                     android:id="@+id/FractionButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:onClick="makeFraction"
-                    android:text="1/x" />
+                    android:textSize="24sp"
+                    android:text="1/X"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -79,6 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="CEButton"
+                    android:textSize="24sp"
                     android:text="CE" />
 
                 <Button
@@ -86,14 +95,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="CButton"
+                    android:textSize="24sp"
                     android:text="C" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/BackspaceButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="backspaceButton"
-                    android:text="Back" />
+                    android:src="@mipmap/outline_backspace_black_24dp"
+                     />
 
                 <Button
                     android:id="@+id/DivideButton"
@@ -114,13 +125,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="addSeven"
-                    android:text="7" />
+                    android:text="7"
+                    android:textSize="24sp" />
 
                 <Button
                     android:id="@+id/EightButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="addEight"
+                    android:textSize="24sp"
                     android:text="8" />
 
                 <Button
@@ -128,6 +141,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="addNine"
+                    android:textSize="24sp"
                     android:text="9" />
 
                 <Button
@@ -149,6 +163,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="addFour"
+                    android:textSize="24sp"
                     android:text="4" />
 
                 <Button
@@ -156,6 +171,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="addFive"
+                    android:textSize="24sp"
                     android:text="5" />
 
                 <Button
@@ -163,6 +179,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="addSix"
+                    android:textSize="24sp"
                     android:text="6" />
 
                 <Button
@@ -183,6 +200,7 @@
                     android:id="@+id/OneButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="24sp"
                     android:onClick="addOne"
                     android:text="1" />
 
@@ -191,6 +209,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="addTwo"
+                    android:textSize="24sp"
                     android:text="2" />
 
                 <Button
@@ -198,6 +217,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="addThree"
+                    android:textSize="24sp"
                     android:text="3" />
 
                 <Button
@@ -226,6 +246,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="addZero"
+                    android:textSize="24sp"
                     android:text="0" />
 
                 <Button
@@ -233,6 +254,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="pointButton"
+                    android:textSize="24sp"
                     android:text="," />
 
                 <Button
