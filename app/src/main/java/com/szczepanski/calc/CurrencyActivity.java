@@ -41,6 +41,8 @@ public class CurrencyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currency);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.outline_money_on_white_24dp);
         getSupportActionBar().setTitle(R.string.currency_convert);
     }
 

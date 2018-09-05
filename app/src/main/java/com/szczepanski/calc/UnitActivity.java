@@ -57,6 +57,8 @@ public class UnitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_unit);
         ButterKnife.bind(this);
         initMeasurementClassSpinner();
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.scale_white);
         getSupportActionBar().setTitle(R.string.unit_convert);
     }
 
