@@ -1,6 +1,7 @@
 package com.szczepanski.calc;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
@@ -26,9 +27,18 @@ import butterknife.ButterKnife;
 
 public class CurrencyActivity extends AppCompatActivity {
 
-    private Exchange exchange = new Exchange();
+    class Task extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            exchange = new Exchange();
+            return null;
+        }
+
+    }
+    private Exchange exchange;
     private ExchangeRate exchangeRate;
     private String symbolSet;
+    private Task task = new Task();
     @BindView(R.id.currencyValueEditText)
     EditText currencyValueEditText;
     @BindView(R.id.currencySpinner)
@@ -41,9 +51,11 @@ public class CurrencyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currency);
+        task.execute();
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.outline_money_on_white_24dp);
         getSupportActionBar().setTitle(R.string.currency_convert);
+        initCurrencySpinner();
     }
 
     @Override
@@ -51,7 +63,6 @@ public class CurrencyActivity extends AppCompatActivity {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.app_bar_menu,menu);
         ButterKnife.bind(this);
-        initCurrencySpinner();
         return true;
     }
 
