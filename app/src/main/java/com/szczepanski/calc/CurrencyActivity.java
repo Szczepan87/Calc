@@ -31,6 +31,12 @@ public class CurrencyActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             exchange = new Exchange();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    initCurrencySpinner();
+                }
+            });
             return null;
         }
 
@@ -38,7 +44,6 @@ public class CurrencyActivity extends AppCompatActivity {
     private Exchange exchange;
     private ExchangeRate exchangeRate;
     private String symbolSet;
-    private Task task = new Task();
     @BindView(R.id.currencyValueEditText)
     EditText currencyValueEditText;
     @BindView(R.id.currencySpinner)
@@ -51,11 +56,10 @@ public class CurrencyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_currency);
-        task.execute();
+        new Task().execute();
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.outline_money_on_white_24dp);
         getSupportActionBar().setTitle(R.string.currency_convert);
-        initCurrencySpinner();
     }
 
     @Override
