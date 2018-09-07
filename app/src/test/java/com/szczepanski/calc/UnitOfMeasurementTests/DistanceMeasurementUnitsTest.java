@@ -3,12 +3,13 @@ package com.szczepanski.calc.UnitOfMeasurementTests;
 import com.szczepanski.calc.UnitsOfMeasurement.DistanceMeasurementUnit;
 import com.szczepanski.calc.UnitsOfMeasurement.UnitDatabaseTemplate;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 
 import static junit.framework.Assert.assertEquals;
-
+@Ignore
 public class DistanceMeasurementUnitsTest {
 
     private UnitDatabaseTemplate unit = new DistanceMeasurementUnit();

@@ -60,7 +60,7 @@ public class OperationTest {
 
     @Test
     public void decimalSubtractingTest() {
-        assertEquals("-0.5", operation.makeCalculation("2.25-2.75"));
+        assertEquals("-0,5", operation.makeCalculation("2.25-2.75"));
     }
 
     @Test
@@ -90,12 +90,12 @@ public class OperationTest {
 
     @Test
     public void decimalMultiplyingTest() {
-        assertEquals("6.1875", operation.makeCalculation("2.25*2.75"));
+        assertEquals("6,1875", operation.makeCalculation("2.25*2.75"));
     }
 
     @Test
     public void dividingStandardTest() {
-        assertEquals("0.6666666667", operation.makeCalculation("2/3"));
+        assertEquals("0,6666666667", operation.makeCalculation("2/3"));
     }
 
     @Test
@@ -115,7 +115,7 @@ public class OperationTest {
 
     @Test
     public void decimalDividingTest() {
-        assertEquals("0.8181818182", operation.makeCalculation("2.25/2.75"));
+        assertEquals("0,8181818182", operation.makeCalculation("2.25/2.75"));
     }
 
     @Test
