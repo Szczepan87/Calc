@@ -1,49 +1,18 @@
 package com.szczepanski.calc;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class Displayed {
+class Displayed {
 
-    private final ArrayList<Character> nonAlphabetical = new ArrayList<>();
-    private final ArrayList<Character> operators = new ArrayList<>();
-
-    public Displayed() {
-        fillNonAlphabetical();
-        fillOperators();
-    }
-
-    private void fillNonAlphabetical() {
-        nonAlphabetical.add('1');
-        nonAlphabetical.add('2');
-        nonAlphabetical.add('3');
-        nonAlphabetical.add('4');
-        nonAlphabetical.add('5');
-        nonAlphabetical.add('6');
-        nonAlphabetical.add('7');
-        nonAlphabetical.add('8');
-        nonAlphabetical.add('9');
-        nonAlphabetical.add('0');
-        nonAlphabetical.add('+');
-        nonAlphabetical.add('-');
-        nonAlphabetical.add('*');
-        nonAlphabetical.add('/');
-        nonAlphabetical.add('=');
-        nonAlphabetical.add('.');
-        nonAlphabetical.add(',');
-    }
-
-    private void fillOperators() {
-        operators.add('+');
-        operators.add('*');
-        operators.add('/');
-        operators.add('-');
-    }
+    private final List<Character> nonAlphabetical = Arrays.asList('1','2','3','4','5','6','7','8','9','0','+','-','*','/','.');
+    private final List<Character> operators = Arrays.asList('+','*','/','-');
 
     private boolean isOperator(char input) {
         return operators.contains(input);
     }
 
-    public boolean isProperInput(String input) {
+    boolean isProperInput(String input) {
 
         int counter = 0;
 
@@ -89,7 +58,7 @@ public class Displayed {
         return true;
     }
 
-    public String updateDisplay(String onScreen, char value) {
+    String updateDisplay(String onScreen, char value) {
         String s = onScreen + value;
         if (isOperator(onScreen.charAt(onScreen.length() - 1))) {
             if (value == '-' && (onScreen.charAt(onScreen.length() - 1) == '-' || onScreen.charAt(onScreen.length() - 1) == '+')) {

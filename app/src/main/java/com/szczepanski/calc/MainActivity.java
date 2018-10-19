@@ -102,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
         else {
             String onScreen = resultTextView.getText().toString();
             String result = operation.makeCalculation(onScreen + "/100");
-            result = result.replace(",",".");
             resultTextView.setText(String.valueOf(result));
         }
     }
