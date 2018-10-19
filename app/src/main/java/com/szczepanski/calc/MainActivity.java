@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         else {
             String onScreen = resultTextView.getText().toString();
             String result = operation.makeCalculation(onScreen + "/100");
+            result = result.replace(",",".");
             resultTextView.setText(String.valueOf(result));
         }
     }
@@ -130,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             resultTextView.setText(R.string.ERROR);
         else {
             BigDecimal result = BigDecimal.valueOf(1.0).divide(BigDecimal.valueOf(Double.parseDouble
-                    (String.valueOf(resultTextView.getText()))), 10, RoundingMode.HALF_UP);
+                    (String.valueOf(resultTextView.getText()))), 10, RoundingMode.HALF_UP).stripTrailingZeros();
             resultTextView.setText(String.valueOf(result));
         }
 

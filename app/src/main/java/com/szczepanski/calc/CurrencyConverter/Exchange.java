@@ -1,8 +1,11 @@
 package com.szczepanski.calc.CurrencyConverter;
 
-import android.os.StrictMode;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
 import com.google.gson.Gson;
+import com.szczepanski.calc.App;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,7 +19,6 @@ import java.util.Scanner;
 
 public class Exchange {
 
-    StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
     private final String BASE_URL = "http://data.fixer.io/api/";
     private final String GET_LATEST = "latest?access_key=";
@@ -27,17 +29,25 @@ public class Exchange {
     private final List<ExchangeRate> listOfExchangeRates = new ArrayList<>();
 
     public Exchange() {
-        StrictMode.setThreadPolicy(policy);
-        openConnection();
+        if (!isNetworkAvailable()) {
 
-        startGson();
-        fillListOfExchangeRates();
-
-        try {
-            inputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+            openConnection();
+
+            startGson();
+            fillListOfExchangeRates();
+
+            try {
+                inputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) App.getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     private void startGson() {

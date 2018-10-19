@@ -34,6 +34,7 @@ public class Operation {
         if (isNotDecimal(input)) {
             return input;
         } else {
+            input = input.replace(",", ".");
             for (int i = input.length() - 1; i >= 0; i--) {
                 if (input.charAt(input.length() - 1) == '.' || input.charAt(input.length() - 1) == ',') {
                     input = String.valueOf(new StringBuilder(input).deleteCharAt(input.length() - 1));
@@ -97,8 +98,7 @@ public class Operation {
                 result = firstVal.multiply(BigDecimal.valueOf(Double.parseDouble(split[1])), MathContext.DECIMAL64);
                 break;
             case "\\/":
-                if (split[1].equals("0") || split[1].equals("") || split[1] == null
-                        || split[1].equals("ERR!"))
+                if (split[1].equals("0") || split[1].equals("") || split[1].equals("ERR!"))
                     return "ERR!";
                 else
                     result = firstVal.divide(BigDecimal.valueOf(Double.parseDouble(split[1])), 10, RoundingMode.HALF_UP);
