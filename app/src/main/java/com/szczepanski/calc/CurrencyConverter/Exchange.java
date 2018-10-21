@@ -82,7 +82,7 @@ public class Exchange {
         listOfExchangeRates.add(new ExchangeRate("Dolar (USA)", "USD", (BigDecimal.valueOf(currency.rates.pLN).divide(BigDecimal.valueOf(currency.rates.uSD), RoundingMode.HALF_UP))));
         listOfExchangeRates.add(new ExchangeRate("Euro", "EUR", BigDecimal.valueOf(currency.rates.pLN)));
         listOfExchangeRates.add(new ExchangeRate("Rubel", "RUB", BigDecimal.valueOf(currency.rates.pLN).divide(BigDecimal.valueOf(currency.rates.rUB),RoundingMode.HALF_UP)));
-        listOfExchangeRates.add(new ExchangeRate("Białoruski rubel", "BYR", BigDecimal.valueOf(currency.rates.pLN).divide(BigDecimal.valueOf(currency.rates.bYN),RoundingMode.HALF_UP)));
+        listOfExchangeRates.add(new ExchangeRate("Białoruski rubel", "BYR", BigDecimal.valueOf(currency.rates.pLN).divide(BigDecimal.valueOf(currency.rates.bYN),RoundingMode.HALF_UP)));//zwraca cenę 100RUB (bug)
         listOfExchangeRates.add(new ExchangeRate("Ukraińska hrywna", "UAH", BigDecimal.valueOf(currency.rates.pLN).divide(BigDecimal.valueOf(currency.rates.uAH),RoundingMode.HALF_UP)));
         listOfExchangeRates.add(new ExchangeRate("Forint", "HUF", BigDecimal.valueOf(currency.rates.pLN).divide(BigDecimal.valueOf(currency.rates.hUF),RoundingMode.HALF_UP)));
         listOfExchangeRates.add(new ExchangeRate("Korona czeska", "CZK", BigDecimal.valueOf(currency.rates.pLN).divide(BigDecimal.valueOf(currency.rates.cZK),RoundingMode.HALF_UP)));

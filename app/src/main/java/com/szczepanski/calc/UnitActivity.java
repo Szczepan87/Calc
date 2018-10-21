@@ -28,6 +28,7 @@ import com.szczepanski.calc.UnitsOfMeasurement.WeightMeasurementUnit;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,6 +51,8 @@ public class UnitActivity extends AppCompatActivity {
     private UnitDatabaseTemplate unit;
     private UnitOfMeasurement firstUnit;
     private UnitOfMeasurement resultUnit;
+    private DecimalFormat decimalFormat = new DecimalFormat("#.##########");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,12 +166,12 @@ public class UnitActivity extends AppCompatActivity {
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         if (event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
             BigDecimal result = BigDecimal.valueOf(Double.parseDouble(String.valueOf(valueEditText.getText())));
-            result = firstUnit.getUnitValue().multiply(result);
+            result = firstUnit.getUnitValue().multiply(result).stripTrailingZeros();
             if (result.equals(BigDecimal.valueOf(0))) {
-                result = BigDecimal.valueOf(0);
+                result = BigDecimal.ZERO;
             }
-            result = result.divide(resultUnit.getUnitValue(),10,RoundingMode.HALF_UP);
-            resultTextView.setText(String.valueOf(result));
+            result = result.divide(resultUnit.getUnitValue(),10,RoundingMode.HALF_UP).stripTrailingZeros();
+            resultTextView.setText(decimalFormat.format(result));
             return true;
         } else return super.onKeyUp(keyCode,event);
     }

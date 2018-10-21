@@ -20,6 +20,7 @@ import com.szczepanski.calc.CurrencyConverter.Exchange;
 import com.szczepanski.calc.CurrencyConverter.ExchangeRate;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import butterknife.BindView;
@@ -44,6 +45,7 @@ public class CurrencyActivity extends AppCompatActivity {
     private Exchange exchange;
     private ExchangeRate exchangeRate;
     private String symbolSet;
+    private DecimalFormat decimalFormat = new DecimalFormat("#.##########");
     @BindView(R.id.currencyValueEditText)
     EditText currencyValueEditText;
     @BindView(R.id.currencySpinner)
@@ -180,9 +182,9 @@ public class CurrencyActivity extends AppCompatActivity {
         initExchangeRate();
 
         if (event.getKeyCode() == KeyEvent.KEYCODE_ENTER){
-            BigDecimal result = BigDecimal.valueOf(Double.parseDouble(String.valueOf(currencyValueEditText.getText())));
+            BigDecimal result = BigDecimal.valueOf(Double.parseDouble(String.valueOf(currencyValueEditText.getText()))).stripTrailingZeros();
             result = result.multiply(exchangeRate.getRate());
-            currencyResultTextView.setText(String.format("%s PLN", String.valueOf(result)));
+            currencyResultTextView.setText(String.format("%s PLN", decimalFormat.format(result)));
             return true;
         }
         else return super.onKeyUp(keyCode,event);

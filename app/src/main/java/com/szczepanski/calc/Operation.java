@@ -10,7 +10,7 @@ class Operation {
     private String operator;
     private BigDecimal result;
     private Displayed display = new Displayed();
-    private DecimalFormat decimalFormat = new DecimalFormat("0.0000000000");
+    private DecimalFormat decimalFormat = new DecimalFormat("#.##########");
 
     private String getOperator() {
         return "\\" + operator;
@@ -80,7 +80,7 @@ class Operation {
             return value;
         this.operator = null;
         result = result.stripTrailingZeros();
-        return String.valueOf(result).replace(',','.');
+        return decimalFormat.format(result).replace(',','.');
     }
 
     String squareRoot(String value) {
@@ -94,13 +94,13 @@ class Operation {
         if (!display.isProperInput(value) || !Character.isDigit(value.charAt(value.length() - 1)))
             return "ERR!";
         result = BigDecimal.valueOf(Math.pow(Double.parseDouble(value), 2)).stripTrailingZeros();
-        return String.valueOf(result).replace(',','.');
+        return decimalFormat.format(result).replace(',','.');
     }
 
     String negate(String value) {
         if (!display.isProperInput(value) || !Character.isDigit(value.charAt(value.length() - 1)))
             return "ERR!";
         result = BigDecimal.valueOf(Double.parseDouble(value)).negate().stripTrailingZeros();
-        return String.valueOf(result).replace(',','.');
+        return decimalFormat.format(result).replace(',','.');
     }
 }
