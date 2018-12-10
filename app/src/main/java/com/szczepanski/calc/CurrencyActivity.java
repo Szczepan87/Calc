@@ -177,6 +177,7 @@ public class CurrencyActivity extends AppCompatActivity {
         }
     }
 
+    // nasłuchiwanie na kliknięcie enter na klawiaturze i ustawienie wyniku
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         initExchangeRate();

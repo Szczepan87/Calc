@@ -30,16 +30,13 @@ class Operation {
             this.operator = "-";
     }
 
-    boolean isNumerical(String value) {
-        char[] valueArr = value.toCharArray();
-        for (char aValueArr : valueArr) {
-            if (!Character.isDigit(aValueArr)) {
-                if (aValueArr == '-') {
-                    return true;
-                }
+    boolean isNotNumerical(String value) {
+        for (int i = 0; i < value.length(); i++) {
+            if (!Character.isDigit(value.charAt(i))&& value.charAt(i) != '-'){
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     String makeCalculation(String value) {

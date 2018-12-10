@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
     //ustawia dziesiętną reprezentację procenta(dzieli na 100)
     public void makePercent(View view) {
-        if (!operation.isNumerical(String.valueOf(resultTextView.getText())))
+        if (operation.isNotNumerical(String.valueOf(resultTextView.getText())))
             resultTextView.setText(R.string.ERROR);
         else {
             String onScreen = resultTextView.getText().toString();
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
     //tworzy pierwiastek kwadratowy z wyniku
     public void makeSQRT(View view) {
-        if (!operation.isNumerical(String.valueOf(resultTextView.getText())))
+        if (operation.isNotNumerical(String.valueOf(resultTextView.getText())))
             resultTextView.setText(R.string.ERROR);
         else {
             resultTextView.setText(operation.squareRoot(String.valueOf(resultTextView.getText())));
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
     //tworzy kwadrat z wyniku
     public void makeSquare(View view) {
-        if (!operation.isNumerical(String.valueOf(resultTextView.getText())))
+        if (operation.isNotNumerical(String.valueOf(resultTextView.getText())))
             resultTextView.setText(R.string.ERROR);
         else {
             resultTextView.setText(operation.square(String.valueOf(resultTextView.getText())));
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
     //tworzy ułamek, którego mianownikiem jest wynik
     public void makeFraction(View view) {
-        if (!operation.isNumerical(String.valueOf(resultTextView.getText())))
+        if (operation.isNotNumerical(String.valueOf(resultTextView.getText())))
             resultTextView.setText(R.string.ERROR);
         else {
             BigDecimal result = BigDecimal.valueOf(1.0).divide(BigDecimal.valueOf(Double.parseDouble
