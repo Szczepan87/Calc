@@ -39,22 +39,26 @@ class Operation {
         return false;
     }
 
+    private String resultDisplayed(BigDecimal result) {
+        result = result.stripTrailingZeros();
+        return decimalFormat.format(result).replace(',','.');
+    }
+
     String makeCalculation(String value) {
-        if (!display.isProperInput(value))
-            return "ERR!";
         setOperator(value);
-        if (this.operator == null)
-            return value;
         String[] split = value.split(getOperator());
-        if (split.length < 2)
-            return "ERR!";
         BigDecimal firstVal;
+        if (!display.isProperInput(value) || split.length < 2) {
+            return "ERR!";
+        }
+        if (this.operator == null) {
+            return value;
+        }
         if (split[0].equals("")) {
             split = value.substring(1).split(getOperator());
             firstVal = BigDecimal.valueOf(Double.parseDouble(split[0])).negate();
         } else
             firstVal = BigDecimal.valueOf(Double.parseDouble(split[0]));
-
 
         switch (getOperator()) {
             case "\\+":
@@ -76,28 +80,27 @@ class Operation {
         if (result == null)
             return value;
         this.operator = null;
-        result = result.stripTrailingZeros();
-        return decimalFormat.format(result).replace(',','.');
+        return resultDisplayed(result);
     }
 
     String squareRoot(String value) {
         if (value.charAt(0) == '-' || !display.isProperInput(value) || !Character.isDigit(value.charAt(value.length() - 1)))
             return "ERR!";
-        result = BigDecimal.valueOf(Math.sqrt(Double.parseDouble(value))).setScale(10,RoundingMode.HALF_EVEN).stripTrailingZeros();
-        return String.valueOf(result).replace(',','.');
+        result = BigDecimal.valueOf(Math.sqrt(Double.parseDouble(value))).setScale(10,RoundingMode.HALF_EVEN);
+        return resultDisplayed(result);
     }
 
     String square(String value) {
         if (!display.isProperInput(value) || !Character.isDigit(value.charAt(value.length() - 1)))
             return "ERR!";
-        result = BigDecimal.valueOf(Math.pow(Double.parseDouble(value), 2)).stripTrailingZeros();
-        return decimalFormat.format(result).replace(',','.');
+        result = BigDecimal.valueOf(Math.pow(Double.parseDouble(value), 2));
+        return resultDisplayed(result);
     }
 
     String negate(String value) {
         if (!display.isProperInput(value) || !Character.isDigit(value.charAt(value.length() - 1)))
             return "ERR!";
-        result = BigDecimal.valueOf(Double.parseDouble(value)).negate().stripTrailingZeros();
-        return decimalFormat.format(result).replace(',','.');
+        result = BigDecimal.valueOf(Double.parseDouble(value)).negate();
+        return resultDisplayed(result);
     }
 }
