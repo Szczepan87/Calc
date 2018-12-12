@@ -1,5 +1,7 @@
 package com.szczepanski.calc;
 
+import android.support.annotation.NonNull;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
@@ -44,6 +46,7 @@ class Operation {
         return decimalFormat.format(result).replace(',','.');
     }
 
+    @NonNull
     String makeCalculation(String value) {
         setOperator(value);
         String[] split = value.split(getOperator());
@@ -77,8 +80,6 @@ class Operation {
                 result = firstVal.subtract(BigDecimal.valueOf(Double.parseDouble(split[1])));
                 break;
         }
-        if (result == null)
-            return value;
         this.operator = null;
         return resultDisplayed(result);
     }

@@ -12,50 +12,26 @@ class Displayed {
         return operators.contains(input);
     }
 
-    boolean isProperInput(String input) {
+    private boolean isProperInput(String onScreen, Character input) {
+        if (operators.contains(input)) {
+            return canOperatorBeConcat(onScreen);
+        } else if (input == '0'){
+            return canZeroBeConcat(onScreen);
+        } else if ((input == '.') || (input == ',')){
+            return canPointBeConcat(onScreen);
+        } else return false;
+    }
 
-        int counter = 0;
+    private boolean canPointBeConcat(String onScreen) {
+        return false;
+    }
 
-        char[] inputCharArr;
+    private boolean canZeroBeConcat(String onScreen) {
+        return false;
+    }
 
-        if (input.charAt(0) == '-') {
-            inputCharArr = input.substring(1).toCharArray();
-        } else if (!Character.isDigit(input.charAt(0))) {
-            return false;
-        } else {
-            inputCharArr = input.toCharArray();
-        }
-
-        for (int i = 0; i < inputCharArr.length; i++) {
-            if (!nonAlphabetical.contains(inputCharArr[i])) {
-                return false;
-            }
-            if (i > 0 && (inputCharArr[i - 1] == '.' || inputCharArr[i - 1] == ',') && isOperator(inputCharArr[i])) {
-                return false;
-            }
-            if (i > 0 && isOperator(inputCharArr[i - 1]) && isOperator(inputCharArr[i])) {
-                return i + 1 < inputCharArr.length && inputCharArr[i - 1] != '-' && inputCharArr[i] == '-' && Character.isDigit(inputCharArr[i + 1]);
-
-            }
-            if (inputCharArr[i] == '.' || inputCharArr[i] == ',') {
-                counter++;
-            }
-            if (isOperator(inputCharArr[i])) {
-                counter = 0;
-            }
-            if (counter > 1) {
-                return false;
-            }
-        }
-
-        for (int i = 0; i < inputCharArr.length; i++) {
-            if (inputCharArr[i] == '.' || inputCharArr[i] == ',') {
-                if (i > 0 && inputCharArr[i - 1] == '.' && inputCharArr[i - 1] == ',') {
-                    return false;
-                }
-            }
-        }
-        return true;
+    private boolean canOperatorBeConcat(String onScreen) {
+        return false;
     }
 
     String updateDisplay(String onScreen, char value) {
@@ -67,7 +43,7 @@ class Displayed {
             } else if (value == '-' && (onScreen.charAt(onScreen.length() - 1) == '*' || onScreen.charAt(onScreen.length() - 1) == '/'))
                 return s;
         }
-        if (isProperInput(s)) {
+        if (isProperInput(s,value)) {
             if (onScreen.length() == 1 && onScreen.charAt(0) == '0' ) {
                 if (isOperator(value) && (value == '-')) {
                     return String.valueOf(value);
