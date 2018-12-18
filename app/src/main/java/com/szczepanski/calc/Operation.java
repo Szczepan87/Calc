@@ -51,7 +51,7 @@ class Operation {
         setOperator(value);
         String[] split = value.split(getOperator());
         BigDecimal firstVal;
-        if (!display.isProperInput(value) || split.length < 2) {
+        if (split.length < 2) {
             return "ERR!";
         }
         if (this.operator == null) {
@@ -85,21 +85,21 @@ class Operation {
     }
 
     String squareRoot(String value) {
-        if (value.charAt(0) == '-' || !display.isProperInput(value) || !Character.isDigit(value.charAt(value.length() - 1)))
+        if (value.charAt(0) == '-' || !Character.isDigit(value.charAt(value.length() - 1)))
             return "ERR!";
         result = BigDecimal.valueOf(Math.sqrt(Double.parseDouble(value))).setScale(10,RoundingMode.HALF_EVEN);
         return resultDisplayed(result);
     }
 
     String square(String value) {
-        if (!display.isProperInput(value) || !Character.isDigit(value.charAt(value.length() - 1)))
+        if (!Character.isDigit(value.charAt(value.length() - 1)))
             return "ERR!";
         result = BigDecimal.valueOf(Math.pow(Double.parseDouble(value), 2));
         return resultDisplayed(result);
     }
 
     String negate(String value) {
-        if (!display.isProperInput(value) || !Character.isDigit(value.charAt(value.length() - 1)))
+        if (!Character.isDigit(value.charAt(value.length() - 1)))
             return "ERR!";
         result = BigDecimal.valueOf(Double.parseDouble(value)).negate();
         return resultDisplayed(result);

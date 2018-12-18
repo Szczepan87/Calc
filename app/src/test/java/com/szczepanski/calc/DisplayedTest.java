@@ -96,7 +96,7 @@ public class DisplayedTest {
         assertEquals("1.6", displayed.updateDisplay("1.",'6'));
         assertEquals("1.7", displayed.updateDisplay("1.",'7'));
         assertEquals("1.8", displayed.updateDisplay("1.",'8'));
-        assertEquals("1.9", displayed.updateDisplay("1.9",'9'));
+        assertEquals("1.9", displayed.updateDisplay("1.",'9'));
         assertEquals("1.", displayed.updateDisplay("1.",'.'));
         assertEquals("1.", displayed.updateDisplay("1.",','));
         assertEquals("1.", displayed.updateDisplay("1.",'+'));
@@ -112,7 +112,7 @@ public class DisplayedTest {
         assertEquals("-1.6", displayed.updateDisplay("-1.",'6'));
         assertEquals("-1.7", displayed.updateDisplay("-1.",'7'));
         assertEquals("-1.8", displayed.updateDisplay("-1.",'8'));
-        assertEquals("-1.9", displayed.updateDisplay("-1.9",'9'));
+        assertEquals("-1.9", displayed.updateDisplay("-1.",'9'));
         assertEquals("-1.", displayed.updateDisplay("-1.",'.'));
         assertEquals("-1.", displayed.updateDisplay("-1.",','));
         assertEquals("-1.", displayed.updateDisplay("-1.",'+'));
@@ -169,8 +169,8 @@ public class DisplayedTest {
         assertEquals("8",displayed.updateDisplay("ERR!", '8'));
         assertEquals("9",displayed.updateDisplay("ERR!", '9'));
         assertEquals("0",displayed.updateDisplay("ERR!", '0'));
+        assertEquals("-",displayed.updateDisplay("ERR!", '-'));
         assertEquals("ERR!",displayed.updateDisplay("ERR!", '+'));
-        assertEquals("ERR!",displayed.updateDisplay("ERR!", '-'));
         assertEquals("ERR!",displayed.updateDisplay("ERR!", '*'));
         assertEquals("ERR!",displayed.updateDisplay("ERR!", '/'));
         assertEquals("ERR!",displayed.updateDisplay("ERR!", '.'));
