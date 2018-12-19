@@ -195,6 +195,27 @@ public class DisplayedTest {
         assertEquals("1/", displayed.updateDisplay("1+",'/'));
         assertEquals("1+", displayed.updateDisplay("1+",'.'));
         assertEquals("1+", displayed.updateDisplay("1+",','));
+        assertEquals("1+", displayed.updateDisplay("1-",'+'));
+        assertEquals("1-", displayed.updateDisplay("1-",'-'));
+        assertEquals("1*", displayed.updateDisplay("1-",'*'));
+        assertEquals("1/", displayed.updateDisplay("1-",'/'));
+        assertEquals("1-", displayed.updateDisplay("1-",','));
+        assertEquals("1-", displayed.updateDisplay("1-",'.'));
+
+        assertEquals("1+", displayed.updateDisplay("1*",'+'));
+        assertEquals("1*-", displayed.updateDisplay("1*",'-'));
+        assertEquals("1*", displayed.updateDisplay("1*",'*'));
+        assertEquals("1/", displayed.updateDisplay("1*",'/'));
+        assertEquals("1*", displayed.updateDisplay("1*",','));
+        assertEquals("1*", displayed.updateDisplay("1*",'.'));
+
+        assertEquals("1+", displayed.updateDisplay("1/",'+'));
+        assertEquals("1/-", displayed.updateDisplay("1/",'-'));
+        assertEquals("1*", displayed.updateDisplay("1/",'*'));
+        assertEquals("1/", displayed.updateDisplay("1/",'/'));
+        assertEquals("1/", displayed.updateDisplay("1/",','));
+        assertEquals("1/", displayed.updateDisplay("1/",'.'));
+
         assertEquals("-1+1", displayed.updateDisplay("-1+",'1'));
         assertEquals("-1+2", displayed.updateDisplay("-1+",'2'));
         assertEquals("-1+3", displayed.updateDisplay("-1+",'3'));

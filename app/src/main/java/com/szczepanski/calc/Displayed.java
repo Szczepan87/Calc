@@ -31,8 +31,9 @@ class Displayed {
      * Replaces mathematical operator with a new one except '-' sign allowing operations
      * on negative numbers.
      * When an "ERR!" message is shown it is replaced with a new digit or a '-' sign.
+     *
      * @param onScreen String showed on screen to be concatenated.
-     * @param input a character to be added to the on screen value.
+     * @param input    a character to be added to the on screen value.
      * @return new String composed of onScreen value and (if conditions met) input.
      * @see private canOperatorBeConcat(onScreen)
      */
@@ -49,33 +50,62 @@ class Displayed {
                     else onScreen += input;
                     break;
                 case '-':
-                    if (Character.isDigit(input)) onScreen += input;
+                    onScreen = plusAndMinusBehavior(onScreen, input);
                     break;
                 case '+':
-                    if (Character.isDigit(input) || input.equals('-')) onScreen += input;
-                    else onScreen = new StringBuilder(onScreen)
-                            .replace(onScreen.length() - 1, onScreen.length() - 1, String.valueOf(input))
-                            .toString();
+                    onScreen = plusAndMinusBehavior(onScreen, input);
                     break;
                 case '*':
-                    if (Character.isDigit(input) || input.equals('-')) onScreen += input;
-                    else onScreen = new StringBuilder(onScreen)
-                            .replace(onScreen.length() - 1, onScreen.length() - 1, String.valueOf(input))
-                            .toString();
+                    onScreen = multiplyAndDivideBehavior(onScreen, input);
                     break;
                 case '/':
-                    if (Character.isDigit(input) || input.equals('-')) onScreen += input;
-                    else onScreen = new StringBuilder(onScreen)
-                            .replace(onScreen.length() - 1, onScreen.length() - 1, String.valueOf(input))
-                            .toString();
+                    onScreen = multiplyAndDivideBehavior(onScreen, input);
                     break;
                 case '!':
                     if (Character.isDigit(input) || input.equals('-'))
                         onScreen = String.valueOf(input);
                     break;
+                case '.':
+                    if (Character.isDigit(input)) onScreen += input;
+                    break;
+                default:
+                    onScreen += input;
             }
         }
-        return onScreen+input;
+        return onScreen;
+    }
+
+    /**
+     * Modifies String showed on screen depending on last character being '*' or '/'
+     *
+     * @param onScreen String showed on screen to be concatenated.
+     * @param input    a character to be added to the on screen value.
+     * @return new String composed of concatenated values of onScreen and value. If input
+     * character is an operator with an exception of '-' sign the last character in the onScreen
+     * String is replaced with the input.
+     */
+    private String multiplyAndDivideBehavior(String onScreen, Character input) {
+        if (Character.isDigit(input) || input.equals('-')) onScreen += input;
+        else onScreen = new StringBuilder(onScreen).deleteCharAt(onScreen.length() - 1)
+                .append(input).toString();
+        return onScreen;
+    }
+
+    /**
+     * Modifies String showed on screen depending on last character being '+' or '-'
+     *
+     * @param onScreen String showed on screen to be concatenated.
+     * @param input    a character to be added to the on screen value.
+     * @return new String composed of concatenated values of onScreen and value only if the input is
+     * a digit. If it's an operator it replaces the last character in the onScreen String with value.
+     */
+    private String plusAndMinusBehavior(String onScreen, Character input) {
+        if (Character.isDigit(input))
+            onScreen += input;
+        else if (operators.contains(input))
+            onScreen = new StringBuilder(onScreen).deleteCharAt(onScreen.length() - 1)
+                    .append(input).toString();
+        return onScreen;
     }
 
     /**
@@ -100,6 +130,9 @@ class Displayed {
      * up to the first mathematical operator symbol
      */
     private boolean canPointBeConcat(String onScreen) {
+
+        if (operators.contains(onScreen.charAt(onScreen.length() - 1))) return false;
+
         int pointCounter = 0;
         for (int i = onScreen.length() - 1; i > 0; i--) {
             if (operators.contains(onScreen.charAt(i))) break;
@@ -128,8 +161,9 @@ class Displayed {
      *
      * @param onScreen text showed on the screen.
      * @return false:
-     * if there're more than 3 minus signs are in the String
+     * if there're more than 3 minus signs in the String
      * more than one mathematical operator (except minus) is present in the String
+     * previous character is decimal pointer
      */
     private boolean canOperatorBeConcat(String onScreen) {
 
@@ -145,6 +179,8 @@ class Displayed {
         if (operatorCounter + minusCounter > 3) return false;
         else if (operatorCounter > 1) return false;
         else if (minusCounter > 3) return false;
+        else if (onScreen.charAt(onScreen.length() - 1) == '.'
+                || onScreen.charAt(onScreen.length() - 1) == ',') return false;
         else return true;
     }
 
