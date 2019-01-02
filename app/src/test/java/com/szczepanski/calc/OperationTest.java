@@ -11,116 +11,86 @@ public class OperationTest {
     @Test
     public void addingStandardTest() {
         assertEquals("5", operation.makeCalculation("2+3"));
+        assertEquals("5", operation.makeCalculation("2.0+3.0"));
+        assertEquals("5.5", operation.makeCalculation("2.5+3"));
     }
 
     @Test
-    public void addingNegativesTest() {
+    public void addingToNegativesTest() {
         assertEquals("1", operation.makeCalculation("-2+3"));
+        assertEquals("1", operation.makeCalculation("-2.0+3.0"));
+        assertEquals("0.5", operation.makeCalculation("-2.5+3"));
+        assertEquals("-5.5", operation.makeCalculation("-2.5+-3"));
     }
 
     @Test
     public void addingZeroesTest() {
         assertEquals("0", operation.makeCalculation("0+0"));
-    }
-
-    @Test
-    public void badInputAddTest() {
-        assertEquals("ERR!", operation.makeCalculation("ERR!+2"));
-    }
-
-    @Test
-    public void decimalAddingTest() {
-        assertEquals("5", operation.makeCalculation("2.25+2.75"));
-    }
-
-    @Test
-    public void addingNegativeAndPositiveTest() {
-        assertEquals("0", operation.makeCalculation("-2+2"));
+        assertEquals("0", operation.makeCalculation("0.0+0.0"));
     }
 
     @Test
     public void subtractingStandardTest() {
         assertEquals("1", operation.makeCalculation("3-2"));
+        assertEquals("-1", operation.makeCalculation("3-4"));
+        assertEquals("-1", operation.makeCalculation("3.0-4.0"));
+        assertEquals("-0.5", operation.makeCalculation("3.5-4.0"));
     }
 
     @Test
     public void subtractingNegativesTest() {
         assertEquals("-5", operation.makeCalculation("-2-3"));
+        assertEquals("1", operation.makeCalculation("-2+3"));
+        assertEquals("-5", operation.makeCalculation("-2.0-3.0"));
+        assertEquals("-5.5", operation.makeCalculation("-2-3.5"));
     }
 
     @Test
     public void subtractingZeroesTest() {
         assertEquals("0", operation.makeCalculation("0-0"));
-    }
-
-    @Test
-    public void badInputSubtractTest() {
-        assertEquals("ERR!", operation.makeCalculation("ERR!-2"));
-    }
-
-    @Test
-    public void decimalSubtractingTest() {
-        assertEquals("-0.5", operation.makeCalculation("2.25-2.75"));
+        assertEquals("0", operation.makeCalculation("0.0-0.0"));
     }
 
     @Test
     public void multiplyingStandardTest() {
         assertEquals("6", operation.makeCalculation("2*3"));
+        assertEquals("6", operation.makeCalculation("2.0*3.0"));
+        assertEquals("5", operation.makeCalculation("2.5*2"));
     }
 
     @Test
     public void multiplyingNegativesTest() {
         assertEquals("6", operation.makeCalculation("-2*-3"));
+        assertEquals("-6", operation.makeCalculation("-2*3"));
+        assertEquals("-6", operation.makeCalculation("-2.0*3.0"));
+        assertEquals("6", operation.makeCalculation("-2.0*-3.0"));
+        assertEquals("-5", operation.makeCalculation("-2.5*2"));
     }
 
     @Test
     public void multiplyingZeroesTest() {
         assertEquals("0", operation.makeCalculation("0*0"));
-    }
-
-    @Test
-    public void multiplyingNegativeAndPositiveTest() {
-        assertEquals("-4", operation.makeCalculation("-2*2"));
-    }
-
-    @Test
-    public void badInputMultiplyTest() {
-        assertEquals("ERR!", operation.makeCalculation("ERR!*2"));
-    }
-
-    @Test
-    public void decimalMultiplyingTest() {
-        assertEquals("6.1875", operation.makeCalculation("2.25*2.75"));
+        assertEquals("0", operation.makeCalculation("0.0*0.0"));
     }
 
     @Test
     public void dividingStandardTest() {
         assertEquals("0.6666666667", operation.makeCalculation("2/3"));
-    }
-
-    @Test
-    public void dividingNegativesTest() {
-        assertEquals("2", operation.makeCalculation("-4/-2"));
+        assertEquals("-0.6666666667", operation.makeCalculation("2/-3"));
+        assertEquals("5", operation.makeCalculation("10/2"));
+        assertEquals("-5", operation.makeCalculation("-10/2"));
     }
 
     @Test
     public void dividingZeroesTest() {
+        assertEquals("0", operation.makeCalculation("0/2"));
         assertEquals("ERR!", operation.makeCalculation("0/0"));
-    }
-
-    @Test
-    public void dividingNegativeAndPositiveTest() {
-        assertEquals("-1", operation.makeCalculation("-2/2"));
     }
 
     @Test
     public void decimalDividingTest() {
         assertEquals("0.8181818182", operation.makeCalculation("2.25/2.75"));
-    }
-
-    @Test
-    public void badInputDivideTest() {
-        assertEquals("ERR!", operation.makeCalculation("ERR!/2"));
+        assertEquals("-0.8181818182", operation.makeCalculation("2.25/-2.75"));
     }
 
     @Test
@@ -136,16 +106,12 @@ public class OperationTest {
     @Test
     public void badInputSquareRootTest() {
         assertEquals("ERR!", operation.squareRoot("ERR!"));
+        assertEquals("ERR!", operation.squareRoot("2-"));
     }
 
     @Test
     public void squareRootZeroTest() {
         assertEquals("0", operation.squareRoot("0"));
-    }
-
-    @Test
-    public void badInputSquareRootTest2() {
-        assertEquals("ERR!", operation.squareRoot("2-"));
     }
 
     @Test
@@ -166,10 +132,6 @@ public class OperationTest {
     @Test
     public void badInputSquareTest() {
         assertEquals("ERR!", operation.square("ERR!"));
-    }
-
-    @Test
-    public void badInputSquareTest2() {
         assertEquals("ERR!", operation.square("2-"));
     }
 
