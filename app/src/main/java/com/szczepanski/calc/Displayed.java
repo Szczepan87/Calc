@@ -49,18 +49,18 @@ class Displayed {
                         onScreen = String.valueOf(input);
                     else onScreen += input;
                     break;
-                case '-':
-                    onScreen = plusAndMinusBehavior(onScreen, input);
-                    break;
-                case '+':
-                    onScreen = plusAndMinusBehavior(onScreen, input);
-                    break;
-                case '*':
-                    onScreen = multiplyAndDivideBehavior(onScreen, input);
-                    break;
-                case '/':
-                    onScreen = multiplyAndDivideBehavior(onScreen, input);
-                    break;
+//                case '-':
+//                    onScreen = plusAndMinusBehavior(onScreen, input);
+//                    break;
+//                case '+':
+//                    onScreen = plusAndMinusBehavior(onScreen, input);
+//                    break;
+//                case '*':
+//                    onScreen = multiplyAndDivideBehavior(onScreen, input);
+//                    break;
+//                case '/':
+//                    onScreen = multiplyAndDivideBehavior(onScreen, input);
+//                    break;
                 case '!':
                     if (Character.isDigit(input) || input.equals('-'))
                         onScreen = String.valueOf(input);
@@ -176,9 +176,8 @@ class Displayed {
                 operatorCounter++;
         }
 
-        if (operatorCounter + minusCounter > 3) return false;
-        else if (operatorCounter > 1) return false;
-        else if (minusCounter > 3) return false;
+        if ((operatorCounter + minusCounter >= 3) || (operatorCounter >= 1) || (minusCounter > 3))
+            return false;
         else if (onScreen.charAt(onScreen.length() - 1) == '.'
                 || onScreen.charAt(onScreen.length() - 1) == ',') return false;
         else return true;

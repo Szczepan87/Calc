@@ -190,28 +190,28 @@ public class DisplayedTest {
         assertEquals("1+9", displayed.updateDisplay("1+",'9'));
         assertEquals("1+0", displayed.updateDisplay("1+",'0'));
         assertEquals("1+", displayed.updateDisplay("1+",'+'));
-        assertEquals("1-", displayed.updateDisplay("1+",'-'));
-        assertEquals("1*", displayed.updateDisplay("1+",'*'));
-        assertEquals("1/", displayed.updateDisplay("1+",'/'));
+        assertEquals("1+-", displayed.updateDisplay("1+",'-'));
+        assertEquals("1+", displayed.updateDisplay("1+",'*'));
+        assertEquals("1+", displayed.updateDisplay("1+",'/'));
         assertEquals("1+", displayed.updateDisplay("1+",'.'));
         assertEquals("1+", displayed.updateDisplay("1+",','));
-        assertEquals("1+", displayed.updateDisplay("1-",'+'));
-        assertEquals("1-", displayed.updateDisplay("1-",'-'));
-        assertEquals("1*", displayed.updateDisplay("1-",'*'));
-        assertEquals("1/", displayed.updateDisplay("1-",'/'));
+        assertEquals("1-", displayed.updateDisplay("1-",'+'));
+        assertEquals("1--", displayed.updateDisplay("1-",'-'));
+        assertEquals("1-", displayed.updateDisplay("1-",'*'));
+        assertEquals("1-", displayed.updateDisplay("1-",'/'));
         assertEquals("1-", displayed.updateDisplay("1-",','));
         assertEquals("1-", displayed.updateDisplay("1-",'.'));
 
         assertEquals("1+", displayed.updateDisplay("1*",'+'));
         assertEquals("1*-", displayed.updateDisplay("1*",'-'));
         assertEquals("1*", displayed.updateDisplay("1*",'*'));
-        assertEquals("1/", displayed.updateDisplay("1*",'/'));
+        assertEquals("1*", displayed.updateDisplay("1*",'/'));
         assertEquals("1*", displayed.updateDisplay("1*",','));
         assertEquals("1*", displayed.updateDisplay("1*",'.'));
 
-        assertEquals("1+", displayed.updateDisplay("1/",'+'));
+        assertEquals("1/", displayed.updateDisplay("1/",'+'));
         assertEquals("1/-", displayed.updateDisplay("1/",'-'));
-        assertEquals("1*", displayed.updateDisplay("1/",'*'));
+        assertEquals("1/", displayed.updateDisplay("1/",'*'));
         assertEquals("1/", displayed.updateDisplay("1/",'/'));
         assertEquals("1/", displayed.updateDisplay("1/",','));
         assertEquals("1/", displayed.updateDisplay("1/",'.'));
@@ -227,9 +227,9 @@ public class DisplayedTest {
         assertEquals("-1+9", displayed.updateDisplay("-1+",'9'));
         assertEquals("-1+0", displayed.updateDisplay("-1+",'0'));
         assertEquals("-1+", displayed.updateDisplay("-1+",'+'));
-        assertEquals("-1-", displayed.updateDisplay("-1+",'-'));
-        assertEquals("-1*", displayed.updateDisplay("-1+",'*'));
-        assertEquals("-1/", displayed.updateDisplay("-1+",'/'));
+        assertEquals("-1+-", displayed.updateDisplay("-1+",'-'));
+        assertEquals("-1+", displayed.updateDisplay("-1+",'*'));
+        assertEquals("-1+", displayed.updateDisplay("-1+",'/'));
         assertEquals("-1+", displayed.updateDisplay("-1+",'.'));
         assertEquals("-1+", displayed.updateDisplay("-1+",','));
     }
@@ -247,9 +247,9 @@ public class DisplayedTest {
         assertEquals("1.0+9", displayed.updateDisplay("1.0+",'9'));
         assertEquals("1.0+0", displayed.updateDisplay("1.0+",'0'));
         assertEquals("1.0+", displayed.updateDisplay("1.0+",'+'));
-        assertEquals("1.0-", displayed.updateDisplay("1.0+",'-'));
-        assertEquals("1.0*", displayed.updateDisplay("1.0+",'*'));
-        assertEquals("1.0/", displayed.updateDisplay("1.0+",'/'));
+        assertEquals("1.0+", displayed.updateDisplay("1.0+",'-'));
+        assertEquals("1.0+", displayed.updateDisplay("1.0+",'*'));
+        assertEquals("1.0+", displayed.updateDisplay("1.0+",'/'));
         assertEquals("1.0+", displayed.updateDisplay("1.0+",'.'));
         assertEquals("1.0+", displayed.updateDisplay("1.0+",','));
         assertEquals("-1.0+1", displayed.updateDisplay("-1.0+",'1'));
@@ -263,9 +263,9 @@ public class DisplayedTest {
         assertEquals("-1.0+9", displayed.updateDisplay("-1.0+",'9'));
         assertEquals("-1.0+0", displayed.updateDisplay("-1.0+",'0'));
         assertEquals("-1.0+", displayed.updateDisplay("-1.0+",'+'));
-        assertEquals("-1.0-", displayed.updateDisplay("-1.0+",'-'));
-        assertEquals("-1.0*", displayed.updateDisplay("-1.0+",'*'));
-        assertEquals("-1.0/", displayed.updateDisplay("-1.0+",'/'));
+        assertEquals("-1.0+", displayed.updateDisplay("-1.0+",'-'));
+        assertEquals("-1.0+", displayed.updateDisplay("-1.0+",'*'));
+        assertEquals("-1.0+", displayed.updateDisplay("-1.0+",'/'));
         assertEquals("-1.0+", displayed.updateDisplay("-1.0+",'.'));
         assertEquals("-1.0+", displayed.updateDisplay("-1.0+",','));
     }
@@ -304,5 +304,45 @@ public class DisplayedTest {
         assertEquals("-1.0+1.", displayed.updateDisplay("-1.0+1.",'/'));
         assertEquals("-1.0+1.", displayed.updateDisplay("-1.0+1.",'.'));
         assertEquals("-1.0+1.", displayed.updateDisplay("-1.0+1.",','));
+        assertEquals("-1.0+1.1", displayed.updateDisplay("-1.0+1.",'1'));
+    }
+
+    @Test
+    public void inputAfterOperationWithDecimals() {
+        assertEquals("-1.0+1.1", displayed.updateDisplay("-1.0+1.1",'.'));
+        assertEquals("-1.0+1.1", displayed.updateDisplay("-1.0+1.1",','));
+        assertEquals("-1.0+1.1", displayed.updateDisplay("-1.0+1.1",'+'));
+        assertEquals("-1.0+1.1", displayed.updateDisplay("-1.0+1.1",'-'));
+        assertEquals("-1.0+1.1", displayed.updateDisplay("-1.0+1.1",'*'));
+        assertEquals("-1.0+1.1", displayed.updateDisplay("-1.0+1.1",'/'));
+
+        assertEquals("1.0+1.1", displayed.updateDisplay("1.0+1.1",'.'));
+        assertEquals("1.0+1.1", displayed.updateDisplay("1.0+1.1",','));
+        assertEquals("1.0+1.1", displayed.updateDisplay("1.0+1.1",'+'));
+        assertEquals("1.0+1.1", displayed.updateDisplay("1.0+1.1",'-'));
+        assertEquals("1.0+1.1", displayed.updateDisplay("1.0+1.1",'*'));
+        assertEquals("1.0+1.1", displayed.updateDisplay("1.0+1.1",'/'));
+
+        assertEquals("1.0+1.11", displayed.updateDisplay("1.0+1.1",'1'));
+        assertEquals("1.0+1.12", displayed.updateDisplay("1.0+1.1",'2'));
+        assertEquals("1.0+1.13", displayed.updateDisplay("1.0+1.1",'3'));
+        assertEquals("1.0+1.14", displayed.updateDisplay("1.0+1.1",'4'));
+        assertEquals("1.0+1.15", displayed.updateDisplay("1.0+1.1",'5'));
+        assertEquals("1.0+1.16", displayed.updateDisplay("1.0+1.1",'6'));
+        assertEquals("1.0+1.17", displayed.updateDisplay("1.0+1.1",'7'));
+        assertEquals("1.0+1.18", displayed.updateDisplay("1.0+1.1",'8'));
+        assertEquals("1.0+1.19", displayed.updateDisplay("1.0+1.1",'9'));
+        assertEquals("1.0+1.10", displayed.updateDisplay("1.0+1.1",'0'));
+
+        assertEquals("-1.0+1.11", displayed.updateDisplay("-1.0+1.1",'1'));
+        assertEquals("-1.0+1.12", displayed.updateDisplay("-1.0+1.1",'2'));
+        assertEquals("-1.0+1.13", displayed.updateDisplay("-1.0+1.1",'3'));
+        assertEquals("-1.0+1.14", displayed.updateDisplay("-1.0+1.1",'4'));
+        assertEquals("-1.0+1.15", displayed.updateDisplay("-1.0+1.1",'5'));
+        assertEquals("-1.0+1.16", displayed.updateDisplay("-1.0+1.1",'6'));
+        assertEquals("-1.0+1.17", displayed.updateDisplay("-1.0+1.1",'7'));
+        assertEquals("-1.0+1.18", displayed.updateDisplay("-1.0+1.1",'8'));
+        assertEquals("-1.0+1.19", displayed.updateDisplay("-1.0+1.1",'9'));
+        assertEquals("-1.0+1.10", displayed.updateDisplay("-1.0+1.1",'0'));
     }
 }

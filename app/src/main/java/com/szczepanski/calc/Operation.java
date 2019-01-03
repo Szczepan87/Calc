@@ -79,8 +79,6 @@ class Operation {
      */
     String makeCalculation(String value) {
 
-        // rodzielenie funkcji wyznaczenia zmiennych do działania do innej metody typu void,
-        // która będzie setterem dla wartości typu BigDecimal firstVal i secondVal
         setVariablesForCalculation(value);
 
         switch (getOperator()) {
